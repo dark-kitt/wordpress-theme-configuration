@@ -1,0 +1,379 @@
+@charset "UTF-8";
+/*!
+ * WordPress Meta Box Sidebar
+ * set width: 100% for selects
+ */
+.meta-box-sortables select {
+  max-width: 100%;
+  width: 100%;
+}
+
+/*!
+ * WordPress Media Library bugfix
+ * appears when uploading svgs into the library
+ */
+span.media-icon.image-icon .attachment-60x60.size-60x60 {
+  width: 60px;
+  height: 60px;
+}
+
+/*!
+ * WordPress customizer media breakpoints
+ */
+.wp-customizer .preview-mobile .wp-full-overlay-main {
+  margin-left: -384px;
+  /*! Half of -$mobile_width */
+  width: 768px;
+  height: 1366px;
+}
+.wp-customizer .preview-tablet .wp-full-overlay-main {
+  margin-left: -540px;
+  /*! Half of -$tablet_width */
+  width: 1080px;
+  height: 720px;
+}
+
+/*!
+ * KiTT plugin - clearfix
+ */
+.KiTT-clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+  visibility: hidden;
+  height: 0;
+}
+
+/*!
+ * KiTT plugin - Meta Box SEO
+ */
+#KiTT-meta_box_seo .inside table {
+  width: 100%;
+}
+#KiTT-meta_box_seo .inside table:first-child {
+  margin-bottom: 0.5em;
+}
+#KiTT-meta_box_seo .inside table:first-child td {
+  padding: 0 !important;
+}
+#KiTT-meta_box_seo .inside table:first-child td input {
+  width: 100%;
+  font-size: 13px;
+}
+#KiTT-meta_box_seo .inside table p {
+  margin: 0;
+  margin-bottom: 0.5em;
+}
+#KiTT-meta_box_seo .inside table td {
+  vertical-align: top;
+  width: 50%;
+}
+#KiTT-meta_box_seo .inside table td:nth-child(odd) {
+  padding-right: 10px;
+}
+#KiTT-meta_box_seo .inside table td:nth-child(even) {
+  padding-left: 10px;
+}
+#KiTT-meta_box_seo .inside table td p {
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#KiTT-meta_box_seo .inside table td p span {
+  font-size: 9px;
+}
+#KiTT-meta_box_seo .inside p {
+  text-align: right;
+}
+#KiTT-meta_box_seo .inside p label {
+  display: block;
+  text-align: left;
+}
+#KiTT-meta_box_seo .inside p a {
+  font-size: 11px;
+}
+#KiTT-meta_box_seo .inside p span {
+  font-size: 9px;
+}
+#KiTT-meta_box_seo .inside textarea {
+  width: 100%;
+  font-size: 13px;
+}
+#KiTT-meta_box_seo .inside div {
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f0f0f1;
+  padding: 1em 1.5em 1.5em 1.5em;
+}
+#KiTT-meta_box_seo .inside div span {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 10px 14px 7px;
+  margin-right: 15px;
+  border-bottom: 2px solid #CCD0D4;
+}
+#KiTT-meta_box_seo .inside div span i {
+  cursor: pointer;
+  color: #0073AA;
+}
+#KiTT-meta_box_seo .inside div span i:hover {
+  color: #E34949;
+}
+#KiTT-meta_box_seo .inside div span i::before {
+  background: 0 0;
+  content: "";
+  display: block;
+  font: normal 16px/20px dashicons;
+  height: 20px;
+  text-align: center;
+  width: 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#KiTT-meta_box_seo .inside div span select {
+  width: auto;
+}
+#KiTT-meta_box_seo .inside div span input, #KiTT-meta_box_seo .inside div span label {
+  margin: 0 5px;
+}
+#KiTT-meta_box_seo .inside div span:nth-last-child(-n+4) label {
+  margin: 0;
+  margin-right: 10px;
+}
+#KiTT-meta_box_seo .inside div span input[type=checkbox], #KiTT-meta_box_seo .inside div span input[type=radio] {
+  position: relative;
+}
+
+/*!
+ * KiTT plugin - Media Library - media box
+ */
+.KiTT-media-box {
+  display: inline-block;
+}
+.KiTT-media-box label,
+.KiTT-media-box .button,
+.KiTT-media-box .spinner {
+  float: left;
+}
+.KiTT-media-box label {
+  margin-top: 6px;
+}
+
+/*!
+ * KiTT plugin - modal box
+ */
+.KiTT-media-modal {
+  z-index: 99;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  left: 50%;
+  top: 47%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+  border: 1px solid #CCD0D4;
+  background-color: #f0f0f1;
+}
+.KiTT-media-modal .KiTT-media-col {
+  position: relative;
+  padding-left: 10px;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  flex-direction: column;
+  width: 78%;
+  width: 100%;
+}
+.KiTT-media-modal .KiTT-media-loading {
+  z-index: 5;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.KiTT-media-modal .KiTT-media-loading .KiTT-media-spin {
+  position: relative;
+  float: none;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.KiTT-media-modal .button {
+  padding: 7px;
+  margin-top: auto;
+  border: 2px solid #0073AA;
+  background-color: #f0f0f1;
+}
+
+/*!
+ * KiTT plugin - modal box - result list
+ */
+#KiTT-media-result {
+  max-height: 80%;
+  background-color: #f0f0f1;
+}
+#KiTT-media-result > div {
+  padding: 5px 10px;
+  border-bottom: 1px solid #555;
+}
+#KiTT-media-result > div input {
+  position: relative;
+  top: 2px;
+}
+#KiTT-media-result > div label {
+  margin-right: 10px;
+}
+#KiTT-media-result > div > span {
+  float: right;
+}
+#KiTT-media-result ul {
+  margin-top: 0;
+  height: 94%;
+  overflow-y: scroll;
+}
+#KiTT-media-result ul li {
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin: 5px 0;
+}
+#KiTT-media-result ul li > input {
+  margin-right: 10px;
+}
+#KiTT-media-result ul li > input[type=checkbox]:checked::before {
+  position: relative;
+  left: 1px;
+  top: 2px;
+  margin: -0.33rem;
+}
+#KiTT-media-result ul li > div {
+  margin-left: 10px;
+  width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+}
+#KiTT-media-result ul li > div input {
+  width: 100%;
+  margin: 5px 0;
+}
+#KiTT-media-result ul li:nth-child(odd) > ul {
+  background-color: #FFF;
+}
+#KiTT-media-result ul li:nth-child(even) > ul {
+  background-color: #f0f0f1;
+}
+#KiTT-media-result ul li a {
+  text-decoration: none;
+}
+#KiTT-media-result ul li h2 {
+  color: #0073AA;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin: 0;
+}
+#KiTT-media-result ul li img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+#KiTT-media-result ul li .KiTT-media-result-img-con {
+  position: relative;
+  width: 60px !important;
+  height: 60px;
+  box-sizing: content-box;
+  overflow: hidden;
+}
+#KiTT-media-result ul.KiTT-media-duplicates li {
+  display: block;
+}
+#KiTT-media-result ul.KiTT-media-duplicates li ul li {
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+}
+
+/*!
+ * KiTT plugin - customize fancybox
+ */
+.fancybox-stage {
+  background-color: rgba(0, 0, 0, 0.56);
+}
+
+.fancybox-container {
+  margin-top: 32px;
+}
+
+.fancybox-can-swipe .fancybox-content {
+  cursor: auto;
+}
+
+/*!
+ * KiTT plugin - company settings
+ */
+body.toplevel_page_company-settings form {
+  padding: 1em;
+  margin-right: 1em;
+}
+body.toplevel_page_company-settings form .company-logo {
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  padding-bottom: 1em;
+}
+body.toplevel_page_company-settings form .company-logo img {
+  max-width: 40%;
+}
+body.toplevel_page_company-settings form .company-logo i {
+  margin-left: 25px;
+  cursor: pointer;
+  color: #0073AA;
+}
+body.toplevel_page_company-settings form .company-logo i:hover {
+  color: #E34949;
+}
+body.toplevel_page_company-settings form .company-logo i::before {
+  background: 0 0;
+  content: "";
+  display: block;
+  font: normal 16px/20px dashicons;
+  height: 20px;
+  text-align: center;
+  width: 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body.toplevel_page_company-settings form input:not([type=submit]):not([type=file]) {
+  width: 100%;
+}
+body.toplevel_page_company-settings form input[type=file] {
+  padding-left: 0.5em;
+}
+body.toplevel_page_company-settings form tr {
+  border-bottom: 1px solid #CCD0D4;
+}
+body.toplevel_page_company-settings form tr .KiTT-company-note {
+  font-size: 9px;
+  font-weight: 400;
+}
+body.toplevel_page_company-settings form tr:first-of-type {
+  border-top: 1px solid #CCD0D4;
+}
+body.toplevel_page_company-settings form tr [name=kitt_company_social_media] {
+  width: 100%;
+}
+
+/*# sourceMappingURL=styles.css.map */
