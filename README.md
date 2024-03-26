@@ -1,5 +1,5 @@
 # **WordPress Theme Configuration**
-Project: [Part 1](#), [**Part 2**](#), [Part 3](#)
+Project: [Part 1](https://github.com/dark-kitt/wordpress-boilerplate/tree/main), [**Part 2**](https://github.com/dark-kitt/wordpress-theme-configuration), [Part 3](https://github.com/dark-kitt/wordpress-theme-vue)
 
 ---
 
@@ -7,7 +7,7 @@ Project: [Part 1](#), [**Part 2**](#), [Part 3](#)
 
 A base WordPress theme configuration written as MU-Plugin, which includes multiple WordPress hooks to improve your theme. Configure the selected theme in the ***functions.php*** file with the listed methods below.
 
-The [Autoloader MU-Plugin](#) is required to load this plugin by WordPress. After **composer update** copy the ***mu-plugin-autoloader.php*** file inside of the *`/mu-plugins`* directory, to load the WordPress Theme Configuration MU-Plugin automatically. Note, the REST API uses the **JWT Authentication for WP REST API** to secure the API endpoints.
+The [Autoloader MU-Plugin](https://github.com/dark-kitt/wordpress-mu-plugin-autoloader) is required to load this plugin by WordPress. After **composer update** copy the ***mu-plugin-autoloader.php*** file inside of the *`/mu-plugins`* directory, to load the WordPress Theme Configuration MU-Plugin automatically. Note, the REST API uses the **JWT Authentication for WP REST API** to secure the API endpoints.
 
 General WordPress configurations are placed in the ***base-configuration.php*** file. For each type / part of WordPress, you can find a PHP Trait in the *`/traits`* directory. E.g.: attachment.php file for Media Library settings, post.php file for the Post settings... etc.
 
@@ -33,7 +33,7 @@ Control each method with the passed **arguments** array or use the default setti
 
 * [PHP: ^7.*](https://www.php.net/manual/de/mysql-xdevapi.installation.php)
 * [WordPress: ^5.5*](https://wordpress.org/support/article/how-to-install-wordpress/)
-* [WordPress MU-Plugin Autoloader](#)
+* [WordPress MU-Plugin Autoloader](https://github.com/dark-kitt/wordpress-mu-plugin-autoloader)
 * [JWT Authentication for WP REST API](https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/)
 
 **to maintain content (optional)**
@@ -829,5 +829,5 @@ Use [ACF (Advanced Custom Fields)](https://www.advancedcustomfields.com/) or ins
 
 ## Includes
 
-* [dark-kitt / wordpress-wp-mu-plugin-autoloader](#)
+* [dark-kitt / wordpress-mu-plugin-autoloader](https://github.com/dark-kitt/wordpress-mu-plugin-autoloader)
 * [JWT Authentication for WP REST API](https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/)
