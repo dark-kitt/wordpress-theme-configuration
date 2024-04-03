@@ -28,6 +28,9 @@ require_once ABSPATH . 'wp-admin/includes/translation-install.php';
 class ThemeSetUp
 {
     public
+        $wpdb,
+        $wp_rewrite,
+        $pagenow,
         $theme_directory,
         $theme_url,
         $plugin_directory,
