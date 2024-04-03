@@ -1,39 +1,39 @@
-$white: #FFF;
+$white: #fff;
 $black: #000;
 
 $white-gray: #f0f0f1;
-$light-gray: #CCD0D4;
-$gray: #BFBFBF;
-$blue-gray: #7E8993;
+$light-gray: #ccd0d4;
+$gray: #bfbfbf;
+$blue-gray: #7e8993;
 $dark-gray: #555;
 
-$red: #E63939;
-$red-light: #E34949;
+$red: #e63939;
+$red-light: #e34949;
 $red-dark: #c73232;
 
 $green: #3cdd27;
 $green-light: #74e266;
 $green-dark: #3ab829;
 
-$WP-blue: #0073AA;
-$WP-light-blue: #00B9EB;
+$WP-blue: #0073aa;
+$WP-light-blue: #00b9eb;
 
 @mixin transform($property) {
-    -webkit-transform: $property;
-    -moz-transform: $property;
-    -ms-transform: $property;
-    -o-transform: $property;
-    transform: $property;
+  -webkit-transform: $property;
+  -moz-transform: $property;
+  -ms-transform: $property;
+  -o-transform: $property;
+  transform: $property;
 }
 
 @mixin flexbox($property) {
-    @if $property == inline {
-        display: -ms-inline-flexbox;
-        display: inline-flex;
-    } @else {
-        display: -ms-flexbox;
-        display: flex;
-    }
+  @if $property == inline {
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+  } @else {
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 
 /*!
@@ -41,8 +41,8 @@ $WP-light-blue: #00B9EB;
  * set width: 100% for selects
  */
 .meta-box-sortables select {
-    max-width: 100%;
-    width: 100%;
+  max-width: 100%;
+  width: 100%;
 }
 
 /*!
@@ -50,422 +50,420 @@ $WP-light-blue: #00B9EB;
  * appears when uploading svgs into the library
  */
 span.media-icon.image-icon .attachment-60x60.size-60x60 {
-    width: 60px;
-    height: 60px;
+  width: 60px;
+  height: 60px;
 }
 
 /*!
  * WordPress customizer media breakpoints
  */
 .wp-customizer {
-    .preview-mobile .wp-full-overlay-main {
-        margin-left: -384px; /*! Half of -$mobile_width */
-        width: 768px;
-        height: 1366px;
-    }
-    .preview-tablet .wp-full-overlay-main {
-        margin-left: -540px; /*! Half of -$tablet_width */
-        width: 1080px;
-        height: 720px;
-    }
+  .preview-mobile .wp-full-overlay-main {
+    margin-left: -384px; /*! Half of -$mobile_width */
+    width: 768px;
+    height: 1366px;
+  }
+  .preview-tablet .wp-full-overlay-main {
+    margin-left: -540px; /*! Half of -$tablet_width */
+    width: 1080px;
+    height: 720px;
+  }
 }
 
 /*!
  * KiTT plugin - clearfix
  */
 .KiTT-clearfix::after {
-    content: "";
-    clear: both;
-    display: block;
-    visibility: hidden;
-    height: 0;
+  content: "";
+  clear: both;
+  display: block;
+  visibility: hidden;
+  height: 0;
 }
 
 /*!
  * KiTT plugin - Meta Box SEO
  */
- #KiTT-meta_box_seo {
-    .inside {
-        table {
-            width: 100%;
+#KiTT-meta_box_seo {
+  .inside {
+    table {
+      width: 100%;
 
-            &:first-child {
-                margin-bottom: .5em;
+      &:first-child {
+        margin-bottom: 0.5em;
 
-                td {
-                    padding: 0 !important;
+        td {
+          padding: 0 !important;
 
-                    input {
-                        width: 100%;
-                        font-size: 13px;
-                    }
-                }
-            }
-
-            p {
-                margin: 0;
-                margin-bottom: .5em;
-            }
-
-            td {
-                vertical-align: top;
-                width: 50%;
-                &:nth-child(odd) {
-                    padding-right: 10px;
-                }
-                &:nth-child(even) {
-                    padding-left: 10px;
-                }
-                p {
-                    @include flexbox(flex);
-                    justify-content: space-between;
-                    align-items: center;
-    
-                    span {
-                        font-size: 9px;
-                    }
-                }
-            }
-        }
-
-        p {
-            text-align: right;
-            label {
-                display: block;
-                text-align: left;
-            }
-            a {
-                font-size: 11px;
-            }
-            span {
-                font-size: 9px;
-            }
-        }
-
-        textarea {
+          input {
             width: 100%;
             font-size: 13px;
+          }
+        }
+      }
+
+      p {
+        margin: 0;
+        margin-bottom: 0.5em;
+      }
+
+      td {
+        vertical-align: top;
+        width: 50%;
+        &:nth-child(odd) {
+          padding-right: 10px;
+        }
+        &:nth-child(even) {
+          padding-left: 10px;
+        }
+        p {
+          @include flexbox(flex);
+          justify-content: space-between;
+          align-items: center;
+
+          span {
+            font-size: 9px;
+          }
+        }
+      }
+    }
+
+    p {
+      text-align: right;
+      label {
+        display: block;
+        text-align: left;
+      }
+      a {
+        font-size: 11px;
+      }
+      span {
+        font-size: 9px;
+      }
+    }
+
+    textarea {
+      width: 100%;
+      font-size: 13px;
+    }
+
+    div {
+      @include flexbox(flex);
+      flex-wrap: wrap;
+      background-color: $white-gray;
+      padding: 1em 1.5em 1.5em 1.5em;
+
+      span {
+        display: inline-flex;
+        align-items: center;
+
+        padding: 14px 10px 14px 7px;
+        margin-right: 15px;
+        border-bottom: 2px solid $light-gray;
+
+        i {
+          cursor: pointer;
+          color: $WP-blue;
+
+          &:hover {
+            color: $red-light;
+          }
+
+          &::before {
+            background: 0 0;
+            content: "\f153";
+            display: block;
+            font: normal 16px/20px dashicons;
+            height: 20px;
+            text-align: center;
+            width: 20px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+          }
         }
 
-        div {
-            @include flexbox(flex);
-            flex-wrap: wrap;
-            background-color: $white-gray;
-            padding: 1em 1.5em 1.5em 1.5em;
+        select {
+          width: auto;
+        }
 
-            span {
-                display: inline-flex;
-                align-items: center;
+        input,
+        label {
+          margin: 0 5px;
+        }
 
-                padding: 14px 10px 14px 7px;
-                margin-right: 15px;
-                border-bottom: 2px solid $light-gray;
+        &:nth-last-child(-n + 4) label {
+          margin: 0;
+          margin-right: 10px;
+        }
 
-                i {
-
-                    cursor: pointer;
-                    color: $WP-blue;
-
-                    &:hover {
-                        color: $red-light;
-                    }
-
-                    &::before {
-                        background: 0 0;                        
-                        content: "\f153";
-                        display: block;
-                        font: normal 16px/20px dashicons;
-                        height: 20px;
-                        text-align: center;
-                        width: 20px;
-                        -webkit-font-smoothing: antialiased;
-                        -moz-osx-font-smoothing: grayscale;
-                    }
-                }
-
-                select {
-                    width: auto;
-                }
-
-                input, label {
-                    margin: 0 5px;
-                }
-
-                &:nth-last-child(-n+4) label {
-                    margin: 0;
-                    margin-right: 10px;
-                }
-
-                input[type=checkbox], input[type=radio] {
-                    position: relative;
-                }
-            }
-        }  
+        input[type="checkbox"],
+        input[type="radio"] {
+          position: relative;
+        }
+      }
     }
+  }
 }
 
 /*!
  * KiTT plugin - Media Library - media box
  */
 .KiTT-media-box {
-    display: inline-block;
+  display: inline-block;
 
-    label,
-    .button,
-    .spinner {
-        float: left;
-    }
-    label {
-        margin-top: 6px;
-    }
+  label,
+  .button,
+  .spinner {
+    float: left;
+  }
+  label {
+    margin-top: 6px;
+  }
 }
 
 /*!
  * KiTT plugin - modal box
  */
 .KiTT-media-modal {
-    z-index: 99;
+  z-index: 99;
 
-    @include flexbox(flex);
+  @include flexbox(flex);
 
+  position: absolute;
+  left: 50%;
+  top: 47%;
+
+  @include transform(translate(-50%, -50%));
+
+  width: 90%;
+  height: 90%;
+
+  border: 1px solid $light-gray;
+  background-color: $white-gray;
+
+  .KiTT-media-col {
+    position: relative;
+    padding-left: 10px;
+
+    @include flexbox(inline);
+
+    flex-direction: column;
+    width: 78%;
+
+    width: 100%;
+  }
+
+  .KiTT-media-loading {
+    z-index: 5;
     position: absolute;
-    left: 50%;
-    top: 47%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($white, 0.9);
 
-    @include transform(translate(-50%, -50%));
+    .KiTT-media-spin {
+      position: relative;
+      float: none;
+      left: 50%;
+      top: 50%;
 
-    width: 90%;
-    height: 90%;
+      @include transform(translate(-50%, -50%));
+    }
+  }
 
-    border: 1px solid $light-gray;
+  .button {
+    padding: 7px;
+    margin-top: auto;
+    border: 2px solid $WP-blue;
     background-color: $white-gray;
-
-    .KiTT-media-col {
-        position: relative;
-        padding-left: 10px;
-    
-        @include flexbox(inline);
-    
-        flex-direction: column;
-        width: 78%;
-
-        width: 100%;
-    }
-
-    .KiTT-media-loading {
-        z-index: 5;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba($white, 0.9);
-    
-        .KiTT-media-spin {
-            position: relative;
-            float: none;
-            left: 50%;
-            top: 50%;
-    
-            @include transform(translate(-50%, -50%));
-        }
-    }
-
-    .button {
-        padding: 7px;
-        margin-top: auto;
-        border: 2px solid $WP-blue;
-        background-color: $white-gray;
-    }
+  }
 }
 
 /*!
  * KiTT plugin - modal box - result list
  */
 #KiTT-media-result {
-    
-    max-height: 80%;
-    background-color: $white-gray;
-    
-    > div {
-        padding: 5px 10px;
-        border-bottom: 1px solid $dark-gray;
-        
+  max-height: 80%;
+  background-color: $white-gray;
+
+  > div {
+    padding: 5px 10px;
+    border-bottom: 1px solid $dark-gray;
+
+    input {
+      position: relative;
+      top: 2px;
+    }
+
+    label {
+      margin-right: 10px;
+    }
+
+    & > span {
+      float: right;
+    }
+  }
+
+  ul {
+    margin-top: 0;
+    height: 94%;
+    overflow-y: scroll;
+
+    li {
+      @include flexbox(flex);
+
+      align-items: center;
+      padding: 10px;
+      margin: 5px 0;
+
+      > input {
+        margin-right: 10px;
+
+        &[type="checkbox"]:checked::before {
+          position: relative;
+          left: 1px;
+          top: 2px;
+          margin: -0.33rem;
+        }
+      }
+
+      > div {
+        margin-left: 10px;
+        width: 100%;
+        flex-direction: column;
+        overflow: hidden;
+
         input {
-            position: relative;
-            top: 2px;
+          width: 100%;
+          margin: 5px 0;
         }
-        
-        label {
-            margin-right: 10px;
-        }
-        
-        &> span {
-            float: right;
-        }
-    }
-    
-    ul {
-        margin-top: 0;
-        height: 94%;
-        overflow-y: scroll;
-        
-        li {
-            @include flexbox(flex);
-            
-            align-items: center;
-            padding: 10px;
-            margin: 5px 0;
-            
-            > input {
-                margin-right: 10px;
-                
-                &[type="checkbox"]:checked::before {
-                    position: relative;
-                    left: 1px;
-                    top: 2px;
-                    margin: -0.33rem;
-                }
-            }
-            
-            > div {
-                margin-left: 10px;
-                width: 100%;
-                flex-direction: column;
-                overflow: hidden;
-                
-                input {
-                    width: 100%;
-                    margin: 5px 0;
-                }
-            }
+      }
 
-            &:nth-child(odd) > ul {
-                background-color: $white;
-            }
+      &:nth-child(odd) > ul {
+        background-color: $white;
+      }
 
-            &:nth-child(even) > ul {
-                background-color: $white-gray;
-            }
-            
-            a {
-                text-decoration: none;
-            }
-            
-            h2 {
-                color: $WP-blue;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                margin: 0;
-            }
-            
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-            }
-            
-            .KiTT-media-result-img-con {
-                position: relative;
-                width: 60px !important;
-                height: 60px;
-                box-sizing: content-box;
-                overflow: hidden;
-            }
-        }
+      &:nth-child(even) > ul {
+        background-color: $white-gray;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      h2 {
+        color: $WP-blue;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin: 0;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .KiTT-media-result-img-con {
+        position: relative;
+        width: 60px !important;
+        height: 60px;
+        box-sizing: content-box;
+        overflow: hidden;
+      }
     }
-    
-    ul.KiTT-media-duplicates {
-        li {
-            display:block;
-            
-            ul li {
-                @include flexbox(flex);
-                background-color: transparent;
-            }
-        }
+  }
+
+  ul.KiTT-media-duplicates {
+    li {
+      display: block;
+
+      ul li {
+        @include flexbox(flex);
+        background-color: transparent;
+      }
     }
+  }
 }
 
 /*!
  * KiTT plugin - customize fancybox
  */
 .fancybox-stage {
-    background-color: rgba($black, 0.56);
+  background-color: rgba($black, 0.56);
 }
 .fancybox-container {
-    margin-top: 32px;
+  margin-top: 32px;
 }
 .fancybox-can-swipe .fancybox-content {
-    cursor: auto;
+  cursor: auto;
 }
 
 /*!
  * KiTT plugin - company settings
  */
 body.toplevel_page_company-settings {
+  form {
+    padding: 1em;
+    margin-right: 1em;
 
-    form {
-        padding: 1em;
-        margin-right: 1em;
+    .company-logo {
+      @include flexbox(flex);
+      align-items: center;
+      padding-bottom: 1em;
 
-        .company-logo {
-            @include flexbox(flex);
-            align-items: center;
-            padding-bottom: 1em;
+      img {
+        max-width: 40%;
+      }
 
-            img {
-                max-width: 40%;
-            }
+      i {
+        margin-left: 25px;
+        cursor: pointer;
+        color: $WP-blue;
 
-            i {
-                margin-left: 25px;
-                cursor: pointer;
-                color: $WP-blue;
-
-                &:hover {
-                    color: $red-light;
-                }
-
-                &::before {
-                    background: 0 0;                        
-                    content: "\f153";
-                    display: block;
-                    font: normal 16px/20px dashicons;
-                    height: 20px;
-                    text-align: center;
-                    width: 20px;
-                    -webkit-font-smoothing: antialiased;
-                    -moz-osx-font-smoothing: grayscale;
-                }
-            }
+        &:hover {
+          color: $red-light;
         }
 
-        input {
-            &:not([type="submit"]):not([type="file"]) {
-                width: 100%;
-            }
-            &[type="file"] {
-                padding-left: .5em;
-            }
+        &::before {
+          background: 0 0;
+          content: "\f153";
+          display: block;
+          font: normal 16px/20px dashicons;
+          height: 20px;
+          text-align: center;
+          width: 20px;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
         }
-
-        tr {
-
-            .KiTT-company-note {
-                font-size: 9px;
-                font-weight: 400;
-            }
-
-            &:first-of-type {
-                border-top: 1px solid $light-gray;    
-            }
-            border-bottom: 1px solid $light-gray;
-
-            [name="kitt_company_social_media"] {
-                width: 100%;
-            }
-        }
+      }
     }
+
+    input {
+      &:not([type="submit"]):not([type="file"]) {
+        width: 100%;
+      }
+      &[type="file"] {
+        padding-left: 0.5em;
+      }
+    }
+
+    tr {
+      .KiTT-company-note {
+        font-size: 9px;
+        font-weight: 400;
+      }
+
+      &:first-of-type {
+        border-top: 1px solid $light-gray;
+      }
+      border-bottom: 1px solid $light-gray;
+
+      [name="kitt_company_social_media"] {
+        width: 100%;
+      }
+    }
+  }
 }
