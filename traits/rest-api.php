@@ -3,10 +3,13 @@
 namespace KiTT;
 
 /** Import PHPMailer classes into the global namespace */
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+
+require_once ABSPATH . WPINC . '/PHPMailer/PHPMailer.php';
+require_once ABSPATH . WPINC . '/PHPMailer/SMTP.php';
+require_once ABSPATH . WPINC . '/PHPMailer/Exception.php';
 
 trait REST_API
 {
@@ -746,6 +749,8 @@ trait REST_API
 
       $conditions = '';
       $where = false;
+      $group_by = $args['group_by'];
+      $order = $args['order'];
 
       foreach ($args as $key => $value) {
 
@@ -768,11 +773,7 @@ trait REST_API
         $conditions .= "AND $key REGEXP '$value' ";
       }
 
-      $sql_query = "SELECT *
-                FROM wp_posts
-                {$conditions}
-                GROUP BY {$group_by}
-                {$order};";
+      $sql_query = "SELECT * FROM wp_posts {$conditions} GROUP BY {$group_by} {$order};";
     }
 
     $data = $self->wpdb->get_results($sql_query, OBJECT);
