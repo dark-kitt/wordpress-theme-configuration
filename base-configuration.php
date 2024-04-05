@@ -2,9 +2,9 @@
 
 /**
  * Plugin Name: Base WP configuration MU-Plugin
- * Description: Configuration Plugin for WordPress Back-End.
+ * Description: Configuration plugin for WordPress backend.
  * Version:     0.1
- * Author:      KITT digital
+ * Author:      KiTT digital
  * Author URI:  https://www.kitt.digital
  * Text Domain: wordpres-theme-configuration
  */
@@ -25,12 +25,10 @@ require_once __DIR__ . '/traits/rest-api.php';
 /** required to install languages */
 require_once ABSPATH . 'wp-admin/includes/translation-install.php';
 
+#[\AllowDynamicProperties]
 class ThemeSetUp
 {
   public
-    $wpdb,
-    $wp_rewrite,
-    $pagenow,
     $theme_directory,
     $theme_url,
     $plugin_directory,

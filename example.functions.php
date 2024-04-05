@@ -446,6 +446,8 @@ $kitt_instance->get_routes_API = function (\WP_REST_Request $request) use ($kitt
 
     $conditions = '';
     $where = false;
+    $group_by = $args['group_by'];
+    $order = $args['order'];
 
     foreach ($args as $key => $value) {
 
@@ -468,11 +470,7 @@ $kitt_instance->get_routes_API = function (\WP_REST_Request $request) use ($kitt
       $conditions .= "AND $key REGEXP '$value' ";
     }
 
-    $posts_query = "SELECT *
-            FROM wp_posts
-            {$conditions}
-            GROUP BY {$group_by}
-            {$order};";
+    $posts_query = "SELECT * FROM wp_posts {$conditions} GROUP BY {$group_by} {$order};";
   }
 
   $posts = $kitt_instance->wpdb->get_results($posts_query);
