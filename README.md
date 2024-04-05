@@ -18,14 +18,14 @@ Use [ACF (Advanced Custom Fields)](https://www.advancedcustomfields.com/) or ins
 ### Methods
 
 * [get_instance()](#get_instance)
-* [set_up_theme()](#set_up_theme-wpdb-wp_rewrite-pagenow-array-args-defaults-)
-* [post()](#post-array-args-defaults-)
-* [page()](#page-array-args-defaults-)
-* [attachment()](#attachment-array-args-defaults-)
-* [comments()](#comments-array-args-defaults-)
-* [menu()](#menu-array-args-defaults-)
-* [custom_post_type()](#custom_post_type-array-args-defaults-)
-* [REST_API()](#rest_api-array-args-defaults-)
+* [set_up_theme()](#set_up_theme-wpdb-wp_rewrite-pagenow-array-args--defaults-)
+* [post()](#post-array-args--defaults-)
+* [page()](#page-array-args--defaults-)
+* [attachment()](#attachment-array-args--defaults-)
+* [comments()](#comments-array-args--defaults-)
+* [menu()](#menu-array-args--defaults-)
+* [custom_post_type()](#custom_post_type-array-args--defaults-)
+* [REST_API()](#rest_api-array-args--defaults-)
 
 Control each method with the passed **arguments** array or use the default settings. If you are interested in the defaults, want to check out each argument, or set your own custom defaults, take a look inside the trait files in the *`/trait`* directory.
 
