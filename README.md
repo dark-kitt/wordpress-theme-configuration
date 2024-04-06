@@ -8,11 +8,11 @@ Project: [Part 1](https://github.com/dark-kitt/wordpress-boilerplate/tree/main),
 
 A base WordPress theme configuration written as MU-Plugin, which includes multiple WordPress hooks to improve your theme. Configure the selected theme in the **_functions.php_** file with the listed methods below.
 
-The [Autoloader MU-Plugin](https://github.com/dark-kitt/wordpress-mu-plugin-autoloader) is required to load this plugin by WordPress. After **composer update** copy the **_mu-plugin-autoloader.php_** file inside of the _`/mu-plugins`_ directory, to load the WordPress Theme Configuration MU-Plugin automatically. Note, the REST API uses the **JWT Authentication for WP REST API** to secure the API endpoints.
+The [Autoloader MU-Plugin](https://github.com/dark-kitt/wordpress-mu-plugin-autoloader) is required to load this plugin by WordPress. After **composer update** copy the **_mu-plugin-autoloader.php_** file inside of the _`/mu-plugins`_ directory, to load the WordPress Theme Configuration MU-Plugin automatically. Note: The REST API uses the **JWT Authentication for WP REST API** to secure the API endpoints.
 
 General WordPress configurations are placed in the **_base-configuration.php_** file. For each type / part of WordPress, you can find a PHP Trait in the _`/traits`_ directory. E.g.: attachment.php file for Media Library settings, post.php file for the Post settings... etc.
 
-**Note, the Gutenberg editor is always disabled!** If WP_HOME is different than WP_SITEURL the Gutenberg editor throws multiple errors. If you are interested, take a look at [Github WordPress / gutenberg (issue 1761).](https://github.com/WordPress/gutenberg/issues/1761)
+**Note: The Gutenberg editor is always disabled!** If WP_HOME is different than WP_SITEURL the Gutenberg editor throws multiple errors. If you are interested, take a look at [Github WordPress / gutenberg (issue 1761).](https://github.com/WordPress/gutenberg/issues/1761)
 
 Use [ACF (Advanced Custom Fields)](https://www.advancedcustomfields.com/) or install the [Classic Editor Plugin](https://wordpress.org/plugins/classic-editor/), to add content to each post / page.
 
@@ -42,7 +42,7 @@ Control each method with the passed **arguments** array or use the default setti
 - [ACF (Advanced Custom Fields)](https://www.advancedcustomfields.com/)
 - [Classic Editor Plugin](https://wordpress.org/plugins/classic-editor/)
 
-Note, if you need an easy way to install this project with all requirements take a look at [part 1](#) of the **[WordPress Boilerplate](#)** project.
+Note: If you need an easy way to install this project with all requirements take a look at [part 1](#) of the **[WordPress Boilerplate](#)** project.
 
 ---
 
@@ -78,7 +78,7 @@ Edit your composer.json file and insert the following lines to install the **Wor
 - run **composer update**
 - configure the plugin with the **_functions.php_** file in the _`/themes/your-theme`_ directory
 
-Note, for a specific commit of your VCS Repo `"require": { "vendor/repo_name": "dev-main#eec8698" }` (branch#commit).
+Note: For a specific commit of your VCS Repo `"require": { "vendor/repo_name": "dev-main#eec8698" }` (branch#commit).
 
 **composer cmds**
 
@@ -179,7 +179,7 @@ $kitt_instance->set_up_theme(
 
 Use this method to modify the **default post section**. All default arguments are listed below.
 
-Note, use [ACF (Advanced Custom Fields)](https://www.advancedcustomfields.com/) or install the [Classic Editor Plugin](https://wordpress.org/plugins/classic-editor/), to add content to each post.
+Note: Use [ACF (Advanced Custom Fields)](https://www.advancedcustomfields.com/) or install the [Classic Editor Plugin](https://wordpress.org/plugins/classic-editor/), to add content to each post.
 
 ```PHP
 $kitt_instance->post([
@@ -229,7 +229,7 @@ $kitt_instance->post([
 
 Use this method to modify the **default page section**. All default arguments are listed below.
 
-Note, use [ACF (Advanced Custom Fields)](https://www.advancedcustomfields.com/) or install the [Classic Editor Plugin](https://wordpress.org/plugins/classic-editor/), to add content to each page.
+Note: Use [ACF (Advanced Custom Fields)](https://www.advancedcustomfields.com/) or install the [Classic Editor Plugin](https://wordpress.org/plugins/classic-editor/), to add content to each page.
 
 ```PHP
 $kitt_instance->page([
@@ -277,7 +277,9 @@ $kitt_instance->page([
 
 Set up options for the **Media Library**. All default arguments are listed below.
 
-Note, that this method can add also the "Find Duplicates" attachments modal, which goes through the database and compares images to find duplicates.
+Note: If another theme was previously activated and the **new upload directory** is different, check the project for the old upload directory and when it is unnecessary delete it manually.
+
+Note: That this method can add also the "Find Duplicates" attachments modal, which goes through the database and compares images to find duplicates.
 
 ```PHP
 $kitt_instance->attachment([
@@ -468,7 +470,7 @@ If you configure the JWT Authentication, don't forget to create a `user` (with t
 
 Use the existing instance to push additional methods (`$kitt_instance->rest_routes['posts'][] = []`) to existing routes or register totally new routes (`$kitt_instance->rest_routes['new_route'][] = []`) to your REST API configuration. You can find an example below, which creates a Vue Router object.
 
-Note, the **axios GET** (READABLE) request can not send data via the body.
+Note: The **axios GET** (READABLE) request can not send data via the body.
 
 **define your custom REST-API**
 
@@ -642,7 +644,7 @@ $kitt_instance->get_my_custom_callback = function (\WP_REST_Request $request) us
 
 ---
 
-**Note, the Gutenberg editor is always disabled!** If WP_HOME is different from WP_SITEURL the Gutenberg editor throws multiple errors. If you are interested, take a look at [Github WordPress / gutenberg (issue 1761).](https://github.com/WordPress/gutenberg/issues/1761)
+**Note: The Gutenberg editor is always disabled!** If WP_HOME is different from WP_SITEURL the Gutenberg editor throws multiple errors. If you are interested, take a look at [Github WordPress / gutenberg (issue 1761).](https://github.com/WordPress/gutenberg/issues/1761)
 
 Use [ACF (Advanced Custom Fields)](https://www.advancedcustomfields.com/) or install the [Classic Editor Plugin](https://wordpress.org/plugins/classic-editor/), to add content to each post / page.
 
