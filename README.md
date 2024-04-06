@@ -1,15 +1,16 @@
 # **WordPress Theme Configuration**
+
 Project: [Part 1](https://github.com/dark-kitt/wordpress-boilerplate/tree/main), [**Part 2**](https://github.com/dark-kitt/wordpress-theme-configuration), [Part 3](https://github.com/dark-kitt/wordpress-theme-vue)
 
 ---
 
 ## Introduction
 
-A base WordPress theme configuration written as MU-Plugin, which includes multiple WordPress hooks to improve your theme. Configure the selected theme in the ***functions.php*** file with the listed methods below.
+A base WordPress theme configuration written as MU-Plugin, which includes multiple WordPress hooks to improve your theme. Configure the selected theme in the **_functions.php_** file with the listed methods below.
 
-The [Autoloader MU-Plugin](https://github.com/dark-kitt/wordpress-mu-plugin-autoloader) is required to load this plugin by WordPress. After **composer update** copy the ***mu-plugin-autoloader.php*** file inside of the *`/mu-plugins`* directory, to load the WordPress Theme Configuration MU-Plugin automatically. Note, the REST API uses the **JWT Authentication for WP REST API** to secure the API endpoints.
+The [Autoloader MU-Plugin](https://github.com/dark-kitt/wordpress-mu-plugin-autoloader) is required to load this plugin by WordPress. After **composer update** copy the **_mu-plugin-autoloader.php_** file inside of the _`/mu-plugins`_ directory, to load the WordPress Theme Configuration MU-Plugin automatically. Note, the REST API uses the **JWT Authentication for WP REST API** to secure the API endpoints.
 
-General WordPress configurations are placed in the ***base-configuration.php*** file. For each type / part of WordPress, you can find a PHP Trait in the *`/traits`* directory. E.g.: attachment.php file for Media Library settings, post.php file for the Post settings... etc.
+General WordPress configurations are placed in the **_base-configuration.php_** file. For each type / part of WordPress, you can find a PHP Trait in the _`/traits`_ directory. E.g.: attachment.php file for Media Library settings, post.php file for the Post settings... etc.
 
 **Note, the Gutenberg editor is always disabled!** If WP_HOME is different than WP_SITEURL the Gutenberg editor throws multiple errors. If you are interested, take a look at [Github WordPress / gutenberg (issue 1761).](https://github.com/WordPress/gutenberg/issues/1761)
 
@@ -17,29 +18,29 @@ Use [ACF (Advanced Custom Fields)](https://www.advancedcustomfields.com/) or ins
 
 ### Methods
 
-* [get_instance()](#get_instance)
-* [set_up_theme()](#set_up_theme-wpdb-wp_rewrite-pagenow-array-args--defaults-)
-* [post()](#post-array-args--defaults-)
-* [page()](#page-array-args--defaults-)
-* [attachment()](#attachment-array-args--defaults-)
-* [comments()](#comments-array-args--defaults-)
-* [menu()](#menu-array-args--defaults-)
-* [custom_post_type()](#custom_post_type-array-args--defaults-)
-* [REST_API()](#rest_api-array-args--defaults-)
+- [get_instance()](#get_instance)
+- [set_up_theme()](#set_up_theme-wpdb-wp_rewrite-pagenow-array-args--defaults-)
+- [post()](#post-array-args--defaults-)
+- [page()](#page-array-args--defaults-)
+- [attachment()](#attachment-array-args--defaults-)
+- [comments()](#comments-array-args--defaults-)
+- [menu()](#menu-array-args--defaults-)
+- [custom_post_type()](#custom_post_type-array-args--defaults-)
+- [REST_API()](#rest_api-array-args--defaults-)
 
-Control each method with the passed **arguments** array or use the default settings. If you are interested in the defaults, want to check out each argument, or set your own custom defaults, take a look inside the trait files in the *`/trait`* directory.
+Control each method with the passed **arguments** array or use the default settings. If you are interested in the defaults, want to check out each argument, or set your own custom defaults, take a look inside the trait files in the _`/trait`_ directory.
 
 ### Requirements
 
-* [PHP: ^7.*](https://www.php.net/manual/de/mysql-xdevapi.installation.php)
-* [WordPress: ^5.5*](https://wordpress.org/support/article/how-to-install-wordpress/)
-* [WordPress MU-Plugin Autoloader](https://github.com/dark-kitt/wordpress-mu-plugin-autoloader)
-* [JWT Authentication for WP REST API](https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/)
+- [PHP: ^7.\*](https://www.php.net/manual/de/mysql-xdevapi.installation.php)
+- [WordPress: ^5.5\*](https://wordpress.org/support/article/how-to-install-wordpress/)
+- [WordPress MU-Plugin Autoloader](https://github.com/dark-kitt/wordpress-mu-plugin-autoloader)
+- [JWT Authentication for WP REST API](https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/)
 
 **to maintain content (optional)**
 
-* [ACF (Advanced Custom Fields)](https://www.advancedcustomfields.com/)
-* [Classic Editor Plugin](https://wordpress.org/plugins/classic-editor/)
+- [ACF (Advanced Custom Fields)](https://www.advancedcustomfields.com/)
+- [Classic Editor Plugin](https://wordpress.org/plugins/classic-editor/)
 
 Note, if you need an easy way to install this project with all requirements take a look at [part 1](#) of the **[WordPress Boilerplate](#)** project.
 
@@ -73,13 +74,14 @@ Edit your composer.json file and insert the following lines to install the **Wor
 ...
 ```
 
-* copy-paste the code inside of ***composer.json*** file
-* run **composer update**
-* configure the plugin with the ***functions.php*** file in the *`/themes/your-theme`* directory
+- copy-paste the code inside of **_composer.json_** file
+- run **composer update**
+- configure the plugin with the **_functions.php_** file in the _`/themes/your-theme`_ directory
 
 Note, for a specific commit of your VCS Repo `"require": { "vendor/repo_name": "dev-main#eec8698" }` (branch#commit).
 
 **composer cmds**
+
 ```shell
 composer install
 composer update
@@ -90,17 +92,18 @@ composer show -i (installed packages)
 
 **Autoloader for WordPress MU-Plugins**
 
-The **[wordpress-mu-plugin-autoloader](#)** is a WordPress MU-Plugin based on [richardtape/subdir-loader.php](https://gist.github.com/richardtape/05c70849e949a5017147) Github Gist. Copy the ***mu-plugin-autoloader.php*** file inside of the *`/mu-plugins`* directory, to load MU-Plugins automatically.
+The **[wordpress-mu-plugin-autoloader](#)** is a WordPress MU-Plugin based on [richardtape/subdir-loader.php](https://gist.github.com/richardtape/05c70849e949a5017147) Github Gist. Copy the **_mu-plugin-autoloader.php_** file inside of the _`/mu-plugins`_ directory, to load MU-Plugins automatically.
 
 ---
 
 ## Methods [ Arguments ]
 
-General WordPress configurations are placed in the ***base-configuration.php*** file. For each type / part of WordPress, you can find a PHP Trait in the *`/traits`* directory. Check out the ***example.function.php*** file to get knowledge about the usage and how you can configure your theme inside of the ***functions.php*** file in your *`/themes/your-theme`* directory.
+General WordPress configurations are placed in the **_base-configuration.php_** file. For each type / part of WordPress, you can find a PHP Trait in the _`/traits`_ directory. Check out the **_example.function.php_** file to get knowledge about the usage and how you can configure your theme inside of the **_functions.php_** file in your _`/themes/your-theme`_ directory.
 
 ### get_instance()
 
 Executes the singleton instance and return itself.
+
 ```PHP
 $kitt_instance = KiTT\ThemeSetUp::get_instance();
 ```
@@ -108,6 +111,7 @@ $kitt_instance = KiTT\ThemeSetUp::get_instance();
 ### set_up_theme( $wpdb, $wp_rewrite, $pagenow, array $args = defaults )
 
 Set the defined globals `$wpdb`, `$wp_rewrite` and `$pagenow` and call the main theme set up method. This method will also call the `meta_box();` and the `company_settings();` methods, which includes the custom **SEO** meta box, the custom **Homepage** meta box, the custom **Error Page** meta box and the **Company** menu page. The `set_up_theme()` method gives you the ability to install languages for WordPress and sets further settings for **ACF (Advanced Custom Fields)**. All default arguments are listed below.
+
 ```PHP
 global $wpdb,
         $wp_rewrite,
@@ -135,10 +139,10 @@ $kitt_instance->set_up_theme(
             'date_format' => 'd/m/Y',
             /**
              * install backend languages
-             * 
+             *
              * list of available translations
              * https://translate.wordpress.org/
-             * 
+             *
              * to remove a translation
              * delete the language code and the
              * files in the /web/storage/lang directory
@@ -176,6 +180,7 @@ $kitt_instance->set_up_theme(
 Use this method to modify the **default post section**. All default arguments are listed below.
 
 Note, use [ACF (Advanced Custom Fields)](https://www.advancedcustomfields.com/) or install the [Classic Editor Plugin](https://wordpress.org/plugins/classic-editor/), to add content to each post.
+
 ```PHP
 $kitt_instance->post([
     /** removes completely the default post section */
@@ -184,7 +189,7 @@ $kitt_instance->post([
         /**
          * info:
          * https://developer.wordpress.org/reference/functions/remove_post_type_support/
-         * 
+         *
          * NOTE:
          * Gutenberg editor is always disabled
          */
@@ -225,6 +230,7 @@ $kitt_instance->post([
 Use this method to modify the **default page section**. All default arguments are listed below.
 
 Note, use [ACF (Advanced Custom Fields)](https://www.advancedcustomfields.com/) or install the [Classic Editor Plugin](https://wordpress.org/plugins/classic-editor/), to add content to each page.
+
 ```PHP
 $kitt_instance->page([
     /** removes completely the default page section */
@@ -233,7 +239,7 @@ $kitt_instance->page([
         /**
          * info:
          * https://developer.wordpress.org/reference/functions/remove_post_type_support/
-         * 
+         *
          * NOTE:
          * Gutenberg editor is always disabled
          */
@@ -271,7 +277,8 @@ $kitt_instance->page([
 
 Set up options for the **Media Library**. All default arguments are listed below.
 
-Note, this method can also add the **Find Duplicates** attachments modal box.
+Note, that this method can add also the "Find Duplicates" attachments modal, which goes through the database and compares images to find duplicates.
+
 ```PHP
 $kitt_instance->attachment([
     'attachment' => [
@@ -282,13 +289,13 @@ $kitt_instance->attachment([
         /** enable search duplicates support */
         'search_duplicates' => true
     ],
-    /** 
+    /**
      * set custom upload mimes
-     * 
+     *
      * extend_defaults = true|false
      * true = merges the default upload mimes
      * false = replaces the default upload mimes
-     * 
+     *
      * list of defaulst:
      * https://developer.wordpress.org/reference/functions/get_allowed_mime_types/
      */
@@ -302,10 +309,10 @@ $kitt_instance->attachment([
          * the XML declaration is required
          * in each SVG file, otherwise
          * the SVG upload is not accepted
-         * 
+         *
          * enter the version and the encoding
-         * charset at the top of each SVG file 
-         * 
+         * charset at the top of each SVG file
+         *
          * <?xml version="1.0" encoding="utf-8"?>
          * <svg xmlns="http://www.w3.org/2000/svg" ... viewBox="0 0 100 57">
          *     ...
@@ -357,6 +364,7 @@ $kitt_instance->attachment([
 ### comments( array $args = defaults )
 
 Remove completely **Comments** from WordPress.
+
 ```PHP
 $kitt_instance->comments([
     /** removes completely the default comments section */
@@ -366,7 +374,8 @@ $kitt_instance->comments([
 
 ### menu( array $args = defaults )
 
-This method will **replace** the Menu (***nav-menus.php***) section from an **Appearance** submenu page to a **top-level** page underneath the Pages section. Additionally, the method adds the **support** for the role **editor** to edit the Menu section (=> editors can edit menus).
+This method will **replace** the Menu (**_nav-menus.php_**) section from an **Appearance** submenu page to a **top-level** page underneath the Pages section. Additionally, the method adds the **support** for the role **editor** to edit the Menu section (=> editors can edit menus).
+
 ```PHP
 $kitt_instance->menu([
     /** register main menu locations */
@@ -383,11 +392,12 @@ $kitt_instance->menu([
 ### custom_post_type( array $args = defaults )
 
 This is a custom **register_post_type** method, which includes some additional options. A **slug is required** to register custom **menu locations** and to use the custom **homepage meta box**. All default arguments are listed below.
+
 ```PHP
-/** 
+/**
  * register new post type
  * example: "Pages EN"
- * 
+ *
  * menu icon info:
  * https://developer.wordpress.org/resource/dashicons/#menu
  */
@@ -454,11 +464,13 @@ $kitt_instance->custom_post_type([
 
 This **`REST_API()`** method uses the **JWT Authentication for WP REST API** to secure the API endpoints. It uses also **PHP Mailer** to send emails via a REST route. In the examples below, you can see how you can optionally use this instance to configure PHP Mailer for your forms. You can also send the server **settings** via a POST body request with **axios**, **jQuery** etc.
 
-If you configure the JWT Authentication, don't forget to create a `user` (with the role -> `rest_api_user`) and test the API requests. If you are using Postman, send the `username` and `password` as post body (raw/json), to retrieve the token. The `\WP_REST_Server::CREATABLE` or other methods are described on the page in the comments. Please take a look inside the ***rest-api.php*** file to **modify** your requests / response data. As you can see, each request handles the default arguments for e.g. `get_posts()` or `get_pages()`.
+If you configure the JWT Authentication, don't forget to create a `user` (with the role -> `rest_api_user`) and test the API requests. If you are using Postman, send the `username` and `password` as post body (raw/json), to retrieve the token. The `\WP_REST_Server::CREATABLE` or other methods are described on [developer.wordpress.org](https://developer.wordpress.org/reference/classes/wp_rest_server/). Please take a deeper look inside the **_rest-api.php_** file to get more information about the handling.
 
 Use the existing instance to push additional methods (`$kitt_instance->rest_routes['posts'][] = []`) to existing routes or register totally new routes (`$kitt_instance->rest_routes['new_route'][] = []`) to your REST API configuration. You can find an example below, which creates a Vue Router object.
 
 Note, the **axios GET** (READABLE) request can not send data via the body.
+
+**define your custom REST-API**
 
 ```PHP
 $kitt_instance->REST_API([
@@ -493,33 +505,31 @@ $kitt_instance->REST_API([
 ]);
 ```
 
-**example configuration for PHP Mailer in functions.php file**
+**EXAMPLE: configuration for PHP Mailer in the functions.php file**
+
 ```PHP
 /**
  * update email route arguments
- * set server settings by PHP
- */
-require_once ABSPATH . WPINC . '/PHPMailer/PHPMailer.php';
-$php_mailer = new PHPMailer\PHPMailer\PHPMailer(true);
-/** PHPMailer debug */
-$kitt_instance->rest_routes['email'][0]['args']['debug'] = ['default' => false];
-/**
+ * set server settings
+ *
  * update values with WP constants
  * or set your custom settings
  */
-$kitt_instance->rest_routes['email'][0]['args']['host'] = ['default' => constant('SMTP_HOST')]; /** 'smtp.gmail.com' */
-$kitt_instance->rest_routes['email'][0]['args']['SMTP_auth'] = ['default' => constant('SMTP_AUTH')]; /** boolean */
-$kitt_instance->rest_routes['email'][0]['args']['username'] = ['default' => constant('SMTP_USERNAME')]; /** 'your@username.com' */
-/** 
+$kitt_instance->rest_routes['email'][0]['args']['host'] = ['default' => constant('SMTP_HOST')]; // 'smtp.gmail.com'
+$kitt_instance->rest_routes['email'][0]['args']['SMTP_auth'] = ['default' => constant('SMTP_AUTH')]; // boolean
+$kitt_instance->rest_routes['email'][0]['args']['username'] = ['default' => constant('SMTP_USERNAME')]; // 'your@username.com'
+/**
  * use google app password:
  * https://support.google.com/accounts/answer/185833?hl=en
  */
-$kitt_instance->rest_routes['email'][0]['args']['password'] = ['default' => constant('SMTP_PASSWORD')]; /** 'password' */
-$kitt_instance->rest_routes['email'][0]['args']['SMTP_secure'] = ['default' => $php_mailer::ENCRYPTION_STARTTLS]; /** constant('SMTP_SECURE') */
-$kitt_instance->rest_routes['email'][0]['args']['port'] = ['default' => constant('SMTP_PORT')]; /** 587 */
+$kitt_instance->rest_routes['email'][0]['args']['password'] = ['default' => constant('SMTP_PASSWORD')]; // 'app-password'
+$kitt_instance->rest_routes['email'][0]['args']['SMTP_secure'] = ['default' => constant('SMTP_SECURE')]; // 'tls'
+$kitt_instance->rest_routes['email'][0]['args']['port'] = ['default' => constant('SMTP_PORT')]; // 587
+/** PHPMailer debug */
+$kitt_instance->rest_routes['email'][0]['args']['debug'] = ['default' => false];
 /**
  * email test data
- * 
+ *
  * test e.g. via postman
  * send data with route -> /wp-json/namespace/email
  */
@@ -537,15 +547,16 @@ $kitt_instance->rest_routes['email'][0]['args']['add_reply_to'] = ['default' => 
 ]];
 ```
 
-**example for adding a custom REST route in functions.php file**
+**EXAMPLE: for adding a custom REST route in the functions.php file**
+
 ```PHP
 /**
  * register REST routes
- * 
+ *
  * functions.php
  * modifing default args
  * $kitt_instance->rest_routes['route'][0]['args']['param'] = ['default' => 'value']
- * 
+ *
  * add route
  * extend $this->rest_routes array
  * e.g.
@@ -572,23 +583,23 @@ $kitt_instance->rest_routes['routes'][] = [
     /**
      * add a custom REST route
      * example: return Vue.js routes
-     * 
+     *
      * const READABLE = 'GET';
      * const CREATABLE = 'POST';
      * ...
      * const ALLMETHODS = 'GET, POST, PUT, PATCH, DELETE';
-     * 
+     *
      * NOTE: axios GET request can not send data via body
-     * 
+     *
      * documentation
      * https://developer.wordpress.org/reference/classes/wp_rest_server/
      */
     'methods'  => \WP_REST_Server::CREATABLE,
-    'callback' => 'get_routes_API', // string required
+    'callback' => 'get_my_custom_callback', // string required!!!
     /**
      * string required
      * ... current_user_can($route['permission_callback']); ...
-     * 
+     *
      * list of roles and capabilities
      * https://wordpress.org/support/article/roles-and-capabilities/
      */
@@ -611,204 +622,21 @@ $kitt_instance->rest_routes['routes'][] = [
 
 /**
  * add a custom REST callback method
- * example: return Vue.js routes
  */
-$kitt_instance->get_routes_API = function (\WP_REST_Request $request) use ($kitt_instance)
+$kitt_instance->get_my_custom_callback = function (\WP_REST_Request $request) use ($kitt_instance)
 {
     /** $_GET and $_POST params */
     $params = $request->get_params();
     /** get the default params */
     $default = $request->get_default_params();
 
-    /* update posts default arguments with request data */
+    /** update posts default arguments with request data */
     $args = $kitt_instance->replace_val_in_array($default, $params);
 
-    $posts_query = $args['SQL'];
+    /** do stuff!!! */
+    $response = "my custom response";
 
-    if ($posts_query) {
-        /** SQL query must start with SELECT [a-zA-Z,]+ FROM [a-zA-Z,]+ */
-        if (!preg_match('/^SELECT\s[\w,]+\sFROM\s[\w,]+\sWHERE\s[^(][\w\s,\'%|]+$/', $posts_query)) {
-            return new \WP_Error( 'invalid-request', "The following SQL query pattern is required > SELECT [a-zA-Z,]+ FROM [a-zA-Z,]+ WHERE [^(][a-zA-Z\s,\'%|]+ ... ", array( 'status' => 400 /* Bad Request */ ) );
-        }
-
-        /** deny access for wp_usermeta and wp_users */
-        if (str_contains($posts_query, 'wp_usermeta') || str_contains($posts_query, 'wp_users')) {
-            $message = (str_contains($posts_query, 'wp_usermeta')) ? 'wp_usermeta' : 'wp_users';
-            return new \WP_Error( 'invalid-request', 'Acces denied for ' . $message, array( 'status' => 400 /* Bad Request */ ) );
-        }
-    }
-
-    /** if custom SQL query is empty */
-    if (!$posts_query || empty($posts_query)) {
-
-        $conditions = '';
-        $where = false;
-
-        foreach($args as $key => $value) {
-
-            if ($key === 'SQL' || $value === '') continue;
-            if ($key === 'order') { $order = $value; continue; }
-            if ($key === 'group_by') { $group_by = $value; continue; }
-
-            if ($where === false) {
-                $conditions .= "WHERE $key REGEXP '$value' ";
-                $where = true;
-                continue;
-            }
-
-            $conditions .= "AND $key REGEXP '$value' ";
-        }
-
-        $posts_query = "SELECT *
-            FROM wp_posts
-            {$conditions}
-            GROUP BY {$group_by}
-            {$order};";
-
-    }
-
-    $posts = $kitt_instance->wpdb->get_results($posts_query);
-
-    $option = [];
-    foreach ([
-        'kitt_option_homepage_%',
-        'kitt_option_error_page_%'
-    ] as $option_key) {
-
-        $option_query = "SELECT ID,option_name 
-            FROM wp_posts, wp_options 
-            WHERE option_value = ID
-            AND option_name LIKE '$option_key'
-            GROUP BY ID;";
-
-        /** get kitt options */
-        foreach ($kitt_instance->wpdb->get_results($option_query) as $result) {
-            $option[] = [
-                'ID' => $result->ID,
-                'option' => $result->option_name
-            ];
-        }
-    }
-
-    /** get meta SEO kitt_meta_seo */
-    $meta = [];
-    foreach ([
-        'kitt_meta_seo_title',
-        'kitt_meta_seo_keywords',
-        'kitt_meta_seo_description',
-        'kitt_meta_seo_robots',
-        'kitt_meta_seo_canonical'
-        ] as $meta_key) {
-
-        $meta_query = "SELECT ID,meta_key,meta_value 
-            FROM wp_posts, wp_postmeta 
-            WHERE ID = post_id
-            AND meta_key = '$meta_key'
-            GROUP BY ID;";
-
-        foreach ($kitt_instance->wpdb->get_results($meta_query) as $result) {
-            if (empty($meta)) {
-                $meta[] = [
-                    'ID' => $result->ID,
-                    $result->meta_key => $result->meta_value
-                ];
-            } else {
-
-                $exists = false;
-                foreach ($meta as $key => $val) {
-                    if ($val['ID'] === $result->ID) {
-                        $exists = true;
-
-                        $val[$result->meta_key] = $result->meta_value;
-                        $meta[$key] = $val;
-                    }
-                }
-
-                if (!$exists) {
-                    $meta[] = [
-                        'ID' => $result->ID,
-                        $result->meta_key => $result->meta_value
-                    ];
-                }
-            }
-        }
-    }
-
-    $routes = [];
-    
-    foreach ($posts as $post) {
-        $option_key = array_search($post->ID, array_column($option, 'ID'));
-        $meta_key = array_search($post->ID, array_column($meta, 'ID'));
-
-        $post->meta = (isset($meta[$meta_key])) ? $meta[$meta_key] : null;
-
-        $permalink = rtrim(get_permalink($post->ID), '/');
-        $parse_url = parse_url($permalink);
-
-        $rewrite = get_post_type_object($post->post_type)->rewrite;
-        $slug = ($rewrite) ? $rewrite['slug'] : null;
-
-        $name = str_replace(['_', '-', ' '], '', ucwords($post->post_title, '_- '));
-
-        $obj = [];
-
-        $obj['name'] = ($slug) ? $name . '-' . strtoupper($slug) : $name;
-        $obj['path'] = $parse_url['path'];
-        $obj['query'] = (isset($parse_url['query'])) ? $parse_url['query'] : '';
-        /**
-         * set component key with default value
-         * to prevent errors in main.js file
-         */
-        $obj['component'] = 'Main';
-        $obj['meta']['tags']['title'] = $post->post_title;
-
-        $obj['meta']['WP']['ID'] = $post->ID;
-        $obj['meta']['WP']['type'] = $post->post_type;
-        $obj['meta']['WP']['status'] = $post->post_status;
-        $obj['meta']['WP']['post_parent'] = $post->post_parent;
-        $obj['meta']['WP']['menu_order'] = $post->menu_order;
-        $obj['meta']['WP']['slug'] = $slug;
-        $obj['meta']['WP']['post_password'] = $post->post_password;
-        
-        if ($post->meta) {
-            unset($post->meta['ID']);
-            $obj['meta']['SEO'] = $post->meta;
-        } else {
-            $obj['meta']['SEO'] = $post->meta;
-        }
-
-        if (!empty($option)) {
-            if ($post->ID === $option[$option_key]['ID'] && strpos($option[$option_key]['option'], 'homepage')) {
-                if ($post->post_type === 'page') {
-                    $obj['name'] = 'Home';
-                    $obj['alias'] = '/';
-                } else {
-                    $obj['name'] = 'Home-' . strtoupper($slug);
-                    $obj['alias'] = '/' . $slug;
-    
-                    array_push($routes, [
-                        'name' => 'Home-' . strtoupper($slug),
-                        'path' => '/' . $slug
-                    ]);
-                }
-            }
-    
-            if ($post->ID === $option[$option_key]['ID'] && strpos($option[$option_key]['option'], 'error_page')) {
-                if ($post->post_type === 'page') {
-                    $obj['name'] = 'NotFound';
-                    $obj['path'] = '/404';
-                } else {
-                    $obj['name'] = 'NotFound-' . strtoupper($slug);
-                    $obj['path'] = '/' . $slug . '/404';
-                }
-            }
-        }
-
-        array_push($routes, $obj);
-    }
-
-    /** return Vue Router object */
-    return new \WP_REST_Response($routes, 200);
+    return new \WP_REST_Response($response, 200);
 };
 ```
 
@@ -819,6 +647,7 @@ $kitt_instance->get_routes_API = function (\WP_REST_Request $request) use ($kitt
 Use [ACF (Advanced Custom Fields)](https://www.advancedcustomfields.com/) or install the [Classic Editor Plugin](https://wordpress.org/plugins/classic-editor/), to add content to each post / page.
 
 ---
+
 ---
 
 ## License
@@ -829,5 +658,5 @@ Use [ACF (Advanced Custom Fields)](https://www.advancedcustomfields.com/) or ins
 
 ## Includes
 
-* [dark-kitt / wordpress-mu-plugin-autoloader](https://github.com/dark-kitt/wordpress-mu-plugin-autoloader)
-* [JWT Authentication for WP REST API](https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/)
+- [dark-kitt / wordpress-mu-plugin-autoloader](https://github.com/dark-kitt/wordpress-mu-plugin-autoloader)
+- [JWT Authentication for WP REST API](https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/)

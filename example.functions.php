@@ -415,239 +415,44 @@ $kitt_instance->rest_routes['routes'][] = [
 
 /**
  * add a custom REST callback method
- * example: return Vue.js routes
  */
-$kitt_instance->get_routes_API = function (\WP_REST_Request $request) use ($kitt_instance) {
+$kitt_instance->get_my_custom_callback = function (\WP_REST_Request $request) use ($kitt_instance) {
   /** $_GET and $_POST params */
   $params = $request->get_params();
   /** get the default params */
   $default = $request->get_default_params();
 
-  /* update posts default arguments with request data */
+  /** update posts default arguments with request data */
   $args = $kitt_instance->replace_val_in_array($default, $params);
 
-  $posts_query = $args['SQL'];
+  /** do stuff!!! */
+  $response = "my custom response";
 
-  if ($posts_query) {
-    /** SQL query must start with SELECT [a-zA-Z,]+ FROM [a-zA-Z,]+ */
-    if (!preg_match('/^SELECT\s[\w,]+\sFROM\s[\w,]+\sWHERE\s[^(][\w\s,\'%|]+$/', $posts_query)) {
-      return new \WP_Error('invalid-request', "The following SQL query pattern is required > SELECT [a-zA-Z,]+ FROM [a-zA-Z,]+ WHERE [^(][a-zA-Z\s,\'%|]+ ... ", array('status' => 400 /* Bad Request */));
-    }
-
-    /** deny access for wp_usermeta and wp_users */
-    if (str_contains($posts_query, 'wp_usermeta') || str_contains($posts_query, 'wp_users')) {
-      $message = (str_contains($posts_query, 'wp_usermeta')) ? 'wp_usermeta' : 'wp_users';
-      return new \WP_Error('invalid-request', 'Acces denied for ' . $message, array('status' => 400 /* Bad Request */));
-    }
-  }
-
-  /** if custom SQL query is empty */
-  if (!$posts_query || empty($posts_query)) {
-
-    $conditions = '';
-    $where = false;
-    $group_by = $args['group_by'];
-    $order = $args['order'];
-
-    foreach ($args as $key => $value) {
-
-      if ($key === 'SQL' || $value === '') continue;
-      if ($key === 'order') {
-        $order = $value;
-        continue;
-      }
-      if ($key === 'group_by') {
-        $group_by = $value;
-        continue;
-      }
-
-      if ($where === false) {
-        $conditions .= "WHERE $key REGEXP '$value' ";
-        $where = true;
-        continue;
-      }
-
-      $conditions .= "AND $key REGEXP '$value' ";
-    }
-
-    $posts_query = "SELECT * FROM wp_posts {$conditions} GROUP BY {$group_by} {$order};";
-  }
-
-  $posts = $kitt_instance->wpdb->get_results($posts_query);
-
-  $option = [];
-  foreach ([
-    'kitt_option_homepage_%',
-    'kitt_option_error_page_%'
-  ] as $option_key) {
-
-    $option_query = "SELECT ID,option_name 
-            FROM wp_posts, wp_options 
-            WHERE option_value = ID
-            AND option_name LIKE '$option_key'
-            GROUP BY ID;";
-
-    /** get kitt options */
-    foreach ($kitt_instance->wpdb->get_results($option_query) as $result) {
-      $option[] = [
-        'ID' => $result->ID,
-        'option' => $result->option_name
-      ];
-    }
-  }
-
-  /** get meta SEO kitt_meta_seo */
-  $meta = [];
-  foreach ([
-    'kitt_meta_seo_title',
-    'kitt_meta_seo_keywords',
-    'kitt_meta_seo_description',
-    'kitt_meta_seo_robots',
-    'kitt_meta_seo_canonical'
-  ] as $meta_key) {
-
-    $meta_query = "SELECT ID,meta_key,meta_value 
-            FROM wp_posts, wp_postmeta 
-            WHERE ID = post_id
-            AND meta_key = '$meta_key'
-            GROUP BY ID;";
-
-    foreach ($kitt_instance->wpdb->get_results($meta_query) as $result) {
-      if (empty($meta)) {
-        $meta[] = [
-          'ID' => $result->ID,
-          $result->meta_key => $result->meta_value
-        ];
-      } else {
-
-        $exists = false;
-        foreach ($meta as $key => $val) {
-          if ($val['ID'] === $result->ID) {
-            $exists = true;
-
-            $val[$result->meta_key] = $result->meta_value;
-            $meta[$key] = $val;
-          }
-        }
-
-        if (!$exists) {
-          $meta[] = [
-            'ID' => $result->ID,
-            $result->meta_key => $result->meta_value
-          ];
-        }
-      }
-    }
-  }
-
-  $routes = [];
-
-  foreach ($posts as $post) {
-    $option_key = array_search($post->ID, array_column($option, 'ID'));
-    $meta_key = array_search($post->ID, array_column($meta, 'ID'));
-
-    $post->meta = (isset($meta[$meta_key])) ? $meta[$meta_key] : null;
-
-    $permalink = rtrim(get_permalink($post->ID), '/');
-    $parse_url = parse_url($permalink);
-
-    $rewrite = get_post_type_object($post->post_type)->rewrite;
-    $slug = ($rewrite) ? $rewrite['slug'] : null;
-
-    $name = str_replace(['_', '-', ' '], '', ucwords($post->post_title, '_- '));
-
-    $obj = [];
-
-    $obj['name'] = ($slug) ? $name . '-' . strtoupper($slug) : $name;
-    $obj['path'] = $parse_url['path'];
-    $obj['query'] = (isset($parse_url['query'])) ? $parse_url['query'] : '';
-    /**
-     * set component key with default value
-     * to prevent errors in main.js file
-     */
-    $obj['component'] = 'Main';
-    $obj['meta']['tags']['title'] = $post->post_title;
-
-    $obj['meta']['WP']['ID'] = $post->ID;
-    $obj['meta']['WP']['type'] = $post->post_type;
-    $obj['meta']['WP']['status'] = $post->post_status;
-    $obj['meta']['WP']['post_parent'] = $post->post_parent;
-    $obj['meta']['WP']['menu_order'] = $post->menu_order;
-    $obj['meta']['WP']['slug'] = $slug;
-    $obj['meta']['WP']['post_password'] = $post->post_password;
-
-    if ($post->meta) {
-      unset($post->meta['ID']);
-      $obj['meta']['SEO'] = $post->meta;
-    } else {
-      $obj['meta']['SEO'] = $post->meta;
-    }
-
-    if (!empty($option)) {
-      if ($post->ID === $option[$option_key]['ID'] && strpos($option[$option_key]['option'], 'homepage')) {
-        if ($post->post_type === 'page') {
-          $obj['name'] = 'Home';
-          $obj['alias'] = '/';
-        } else {
-          $obj['name'] = 'Home-' . strtoupper($slug);
-          $obj['alias'] = '/' . $slug;
-
-          array_push($routes, [
-            'name' => 'Home-' . strtoupper($slug),
-            'path' => '/' . $slug
-          ]);
-        }
-      }
-
-      if ($post->ID === $option[$option_key]['ID'] && strpos($option[$option_key]['option'], 'error_page')) {
-        if ($post->post_type === 'page') {
-          $obj['name'] = 'NotFound';
-          $obj['path'] = '/404';
-        } else {
-          $obj['name'] = 'NotFound-' . strtoupper($slug);
-          $obj['path'] = '/' . $slug . '/404';
-        }
-      }
-    }
-
-    array_push($routes, $obj);
-  }
-  /** return Vue Router object */
-  $response = new \WP_REST_Response($routes, 200);
-  return $response;
+  return new \WP_REST_Response($response, 200);
 };
 
 /**
  * update email route arguments
- * set server settings by PHP
- */
-require_once ABSPATH . WPINC . '/PHPMailer/PHPMailer.php';
-$php_mailer = new PHPMailer\PHPMailer\PHPMailer(true);
-/** PHPMailer debug */
-$kitt_instance->rest_routes['email'][0]['args']['debug'] = ['default' => false];
-/**
+ * set server settings
+ *
  * update values with WP constants
  * or set your custom settings
  */
-$kitt_instance->rest_routes['email'][0]['args']['host'] = ['default' => constant('SMTP_HOST')];
-/** 'smtp.gmail.com' */
-$kitt_instance->rest_routes['email'][0]['args']['SMTP_auth'] = ['default' => constant('SMTP_AUTH')];
-/** boolean */
-$kitt_instance->rest_routes['email'][0]['args']['username'] = ['default' => constant('SMTP_USERNAME')];
-/** 'your@username.com' */
-/** 
+$kitt_instance->rest_routes['email'][0]['args']['host'] = ['default' => constant('SMTP_HOST')]; // 'smtp.gmail.com'
+$kitt_instance->rest_routes['email'][0]['args']['SMTP_auth'] = ['default' => constant('SMTP_AUTH')]; // boolean
+$kitt_instance->rest_routes['email'][0]['args']['username'] = ['default' => constant('SMTP_USERNAME')]; // 'your@username.com'
+/**
  * use google app password:
  * https://support.google.com/accounts/answer/185833?hl=en
  */
-$kitt_instance->rest_routes['email'][0]['args']['password'] = ['default' => constant('SMTP_PASSWORD')];
-/** 'password' */
-$kitt_instance->rest_routes['email'][0]['args']['SMTP_secure'] = ['default' => $php_mailer::ENCRYPTION_STARTTLS];
-/** constant('SMTP_SECURE') */
-$kitt_instance->rest_routes['email'][0]['args']['port'] = ['default' => constant('SMTP_PORT')];
-/** 587 */
+$kitt_instance->rest_routes['email'][0]['args']['password'] = ['default' => constant('SMTP_PASSWORD')]; // 'app-password'
+$kitt_instance->rest_routes['email'][0]['args']['SMTP_secure'] = ['default' => constant('SMTP_SECURE')]; // 'tls'
+$kitt_instance->rest_routes['email'][0]['args']['port'] = ['default' => constant('SMTP_PORT')]; // 587
+/** PHPMailer debug */
+$kitt_instance->rest_routes['email'][0]['args']['debug'] = ['default' => false];
 /**
  * email test data
- * 
+ *
  * test e.g. via postman
  * send data with route -> /wp-json/namespace/email
  */
