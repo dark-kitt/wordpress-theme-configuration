@@ -20,10 +20,10 @@ $kitt_instance->set_up_theme(
   [
     'set_up' => [
       /** custom favicon, logos and login logo url */
-      'favicon' => $kitt_instance->theme_url . '/img/wp-favicon.png',
-      'login_logo' => $kitt_instance->theme_url . '/img/wp-login-logo.svg',
+      'favicon' => $kitt_instance->theme_url . '/image/wp-favicon.png',
+      'login_logo' => $kitt_instance->theme_url . '/image/wp-login-logo.svg',
       'login_logo_url' => WP_HOME,
-      'admin_bar_logo' => $kitt_instance->theme_url . '/img/wp-admin-bar-logo.svg',
+      'admin_bar_logo' => $kitt_instance->theme_url . '/image/wp-admin-bar-logo.svg',
       'permalink_structure' => '/%postname%/',
       'default_user_role' => 'editor',
       'remove_welcome' => true,
@@ -399,17 +399,7 @@ $kitt_instance->rest_routes['routes'][] = [
   'permission_callback' => 'rest_api_user',
   /** set the defaults */
   'args' => [
-    'SQL' => ['default' => false],
-    'ID' => ['default' => ''],
-    'post_title' => ['default' => ''],
-    'post_status' => ['default' => 'publish|pending|draft|auto-draft|future|private'],
-    'post_name' => ['default' => ''],
-    'post_parent' => ['default' => ''],
-    'guid' => ['default' => ''],
-    'menu_order' => ['default' => ''],
-    'post_type' => ['default' => 'post$|page'],
-    'order' => ['default' => 'DESC'],
-    'group_by' => ['default' => 'ID']
+    'param_one' => ['default' => false]
   ]
 ];
 
