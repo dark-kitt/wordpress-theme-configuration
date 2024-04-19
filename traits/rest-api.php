@@ -445,6 +445,18 @@ trait REST_API
      * deny access to WordPress backend
      */
     add_role('rest_api_user', 'REST API User', $this->capabilities);
+    /** clear session data in database */
+    add_action('init', function () {
+      $user = wp_get_current_user();
+      if (!empty($user->roles) && in_array('rest_api_user', $user->roles, true)) {
+        // delete session token data in database
+        $sessions  = \WP_Session_Tokens::get_instance(get_current_user_id());
+        $token = wp_get_session_token();
+        $sessions->destroy_others($token);
+        // log current user out
+        wp_logout();
+      }
+    });
 
     /**
      * remove default REST API endpoints
