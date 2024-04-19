@@ -461,15 +461,17 @@ $kitt_instance->custom_post_type([
 
 ### REST_API( array $args = defaults )
 
-This **`REST_API()`** method uses the **JWT Authentication for WP REST API** to secure the API endpoints. It uses also **PHP Mailer** to send emails via a REST route. In the examples below, you can see how you can optionally use this instance to configure PHP Mailer for your forms. You can also send the server **settings** via a POST body request with **axios**, **jQuery** etc.
+This **`REST_API()`** method uses the **JWT Authentication for WP REST API** to secure the API endpoints. It uses also **PHP Mailer** to send emails via a REST route. In the examples below, you can see how you can optionally use this instance to configure PHP Mailer for your forms. You can also send the server **settings** via a POST body request with **axios**, **jQuery**, or any other way to send a request.
 
-If you configure the JWT Authentication, don't forget to create a `user` (with the role -> `rest_api_user`) and test the API requests. If you are using Postman, send the `username` and `password` as post body (raw/json), to retrieve the token. The `\WP_REST_Server::CREATABLE` or other methods are described on [developer.wordpress.org](https://developer.wordpress.org/reference/classes/wp_rest_server/). Please take a deeper look inside the **_rest-api.php_** file to get more information about the handling.
+While you configure your custom **REST-API**, it is required to create a user with the role **rest_api_user**. This is important because the user with the role **rest_api_user** has only access to the REST-API and not to the backend system.
 
-Use the existing instance to push additional methods (`$kitt_instance->rest_routes['posts'][] = []`) to existing routes or register totally new routes (`$kitt_instance->rest_routes['new_route'][] = []`) to your REST API configuration. You can find an example below, which creates a Vue Router object.
+If you are using Postman for testing the API request, to retrieve the token from JWT Authentication for WP REST API, send the `username` and `password` as post body (raw/json) data. The `\WP_REST_Server::CREATABLE` or other methods are described on [developer.wordpress.org](https://developer.wordpress.org/reference/classes/wp_rest_server/). Please take a deeper look inside the **_rest-api.php_** file to get more information about the handling.
+
+Use the existing instance to push additional methods (`$kitt_instance->rest_routes['posts'][] = []`) to existing routes or register totally new routes (`$kitt_instance->rest_routes['new_route'][] = []`) to your REST API configuration.
 
 Note: The **axios GET** (READABLE) request can not send data via the body.
 
-**define your custom REST-API**
+**EXAMPLE: define your custom REST-API**
 
 ```PHP
 $kitt_instance->REST_API([
