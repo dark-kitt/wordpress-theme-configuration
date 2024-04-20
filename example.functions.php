@@ -344,16 +344,16 @@ $kitt_instance->REST_API([
 ]);
 
 /**
- * register REST routes
+ * register custom REST routes
  * 
  * functions.php
  * modifing default args
- * $kitt_instance->rest_routes['route'][0]['args']['param'] = ['default' => 'value']
+ * $kitt_instance->rest_routes['route']['args']['param'] = ['default' => 'value']
  * 
  * add route
  * extend $this->rest_routes array
  * e.g.
- * $kitt_instance->rest_routes['posts'][] = [
+ * $kitt_instance->rest_routes['endpoint'] = [
  *     'methods'  => \WP_REST_Server::CREATABLE,
  *     'callback' => 'call_callback_API',
  *     'permission_callback' => 'edit_others_posts',
@@ -372,7 +372,7 @@ $kitt_instance->REST_API([
  *     return $response;
  * };
  */
-$kitt_instance->rest_routes['routes'][] = [
+$kitt_instance->rest_routes['endpoint'] = [
   /**
    * add a custom REST route
    * example: return Vue.js routes
@@ -388,7 +388,7 @@ $kitt_instance->rest_routes['routes'][] = [
    * https://developer.wordpress.org/reference/classes/wp_rest_server/
    */
   'methods'  => \WP_REST_Server::CREATABLE,
-  'callback' => 'get_routes_API', // string required
+  'callback' => 'my_custom_callback', // string required
   /**
    * string required
    * ... current_user_can($route['permission_callback']); ...
@@ -406,7 +406,7 @@ $kitt_instance->rest_routes['routes'][] = [
 /**
  * add a custom REST callback method
  */
-$kitt_instance->get_my_custom_callback = function (\WP_REST_Request $request) use ($kitt_instance) {
+$kitt_instance->my_custom_callback = function (\WP_REST_Request $request) use ($kitt_instance) {
   /** $_GET and $_POST params */
   $params = $request->get_params();
   /** get the default params */
@@ -428,33 +428,33 @@ $kitt_instance->get_my_custom_callback = function (\WP_REST_Request $request) us
  * update values with WP constants
  * or set your custom settings
  */
-$kitt_instance->rest_routes['email'][0]['args']['host'] = ['default' => constant('SMTP_HOST')]; // 'smtp.gmail.com'
-$kitt_instance->rest_routes['email'][0]['args']['SMTP_auth'] = ['default' => constant('SMTP_AUTH')]; // boolean
-$kitt_instance->rest_routes['email'][0]['args']['username'] = ['default' => constant('SMTP_USERNAME')]; // 'your@username.com'
+$kitt_instance->rest_routes['email']['args']['host'] = ['default' => constant('SMTP_HOST')]; // 'smtp.gmail.com'
+$kitt_instance->rest_routes['email']['args']['SMTP_auth'] = ['default' => constant('SMTP_AUTH')]; // boolean
+$kitt_instance->rest_routes['email']['args']['username'] = ['default' => constant('SMTP_USERNAME')]; // 'your@username.com'
 /**
  * use google app password:
  * https://support.google.com/accounts/answer/185833?hl=en
  */
-$kitt_instance->rest_routes['email'][0]['args']['password'] = ['default' => constant('SMTP_PASSWORD')]; // 'app-password'
-$kitt_instance->rest_routes['email'][0]['args']['SMTP_secure'] = ['default' => constant('SMTP_SECURE')]; // 'tls'
-$kitt_instance->rest_routes['email'][0]['args']['port'] = ['default' => constant('SMTP_PORT')]; // 587
+$kitt_instance->rest_routes['email']['args']['password'] = ['default' => constant('SMTP_PASSWORD')]; // 'app-password'
+$kitt_instance->rest_routes['email']['args']['SMTP_secure'] = ['default' => constant('SMTP_SECURE')]; // 'tls'
+$kitt_instance->rest_routes['email']['args']['port'] = ['default' => constant('SMTP_PORT')]; // 587
 /** PHPMailer debug */
-$kitt_instance->rest_routes['email'][0]['args']['debug'] = ['default' => false];
+$kitt_instance->rest_routes['email']['args']['debug'] = ['default' => false];
 /**
  * email test data
  *
  * test e.g. via postman
  * send data with route -> /wp-json/namespace/email
  */
-$kitt_instance->rest_routes['email'][0]['args']['set_from'] = ['default' => [
+$kitt_instance->rest_routes['email']['args']['set_from'] = ['default' => [
   'address' => 'from@address.com',
   'name' => 'User Foo'
 ]];
-$kitt_instance->rest_routes['email'][0]['args']['add_address'] = ['default' => [[
+$kitt_instance->rest_routes['email']['args']['add_address'] = ['default' => [[
   'address' => 'add_to@address.com',
   'name' => 'User Bar'
 ]]];
-$kitt_instance->rest_routes['email'][0]['args']['add_reply_to'] = ['default' => [
+$kitt_instance->rest_routes['email']['args']['add_reply_to'] = ['default' => [
   'address' => 'add_to_reply@address.com',
   'name' => 'User Foo'
 ]];

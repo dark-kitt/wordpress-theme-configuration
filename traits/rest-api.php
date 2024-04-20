@@ -22,41 +22,39 @@ trait REST_API
        * https://developer.wordpress.org/reference/classes/wp_query/parse_query/
        */
       'posts' => [
-        [
-          /**
-           * const READABLE = 'GET';
-           * const CREATABLE = 'POST';
-           * ...
-           * const ALLMETHODS = 'GET, POST, PUT, PATCH, DELETE';
-           * 
-           * NOTE: axios GET request can not send data via body
-           * 
-           * documentation
-           * https://developer.wordpress.org/reference/classes/wp_rest_server/
-           */
-          'methods'  => \WP_REST_Server::CREATABLE,
-          'callback' => 'get_posts_API',
-          'permission_callback' => 'rest_api_user',
-          'args' => [
-            'posts_per_page' => ['default' => -1],
-            'offset' => ['default' => 0],
-            'cat' => ['default' => ''],
-            'category_name' => ['default' => ''],
-            'orderby' => ['default' => 'date'],
-            'order' => ['default' => 'DESC'],
-            'include' => ['default' => []],
-            'exclude' => ['default' => []],
-            'meta_key' => ['default' => ''],
-            'meta_value' => ['default' => ''],
-            'post_type' => ['default' => ['post']],
-            'post_mime_type' => ['default' => ''],
-            'post_parent' => ['default' => 0],
-            'author' => ['default' => ''],
-            'author_name' => ['default' => ''],
-            'post_status' => ['default' => ['publish', 'pending', 'draft', 'auto-draft', 'future', 'private']],
-            'suppress_filters' => ['default' => true],
-            'fields' => ['default' => '']
-          ]
+        /**
+         * const READABLE = 'GET';
+         * const CREATABLE = 'POST';
+         * ...
+         * const ALLMETHODS = 'GET, POST, PUT, PATCH, DELETE';
+         * 
+         * NOTE: axios GET request can not send data via body
+         * 
+         * documentation
+         * https://developer.wordpress.org/reference/classes/wp_rest_server/
+         */
+        'methods'  => \WP_REST_Server::CREATABLE,
+        'callback' => 'get_posts_API',
+        'permission_callback' => 'rest_api_user',
+        'args' => [
+          'posts_per_page' => ['default' => -1],
+          'offset' => ['default' => 0],
+          'cat' => ['default' => ''],
+          'category_name' => ['default' => ''],
+          'orderby' => ['default' => 'date'],
+          'order' => ['default' => 'DESC'],
+          'include' => ['default' => []],
+          'exclude' => ['default' => []],
+          'meta_key' => ['default' => ''],
+          'meta_value' => ['default' => ''],
+          'post_type' => ['default' => ['post']],
+          'post_mime_type' => ['default' => ''],
+          'post_parent' => ['default' => 0],
+          'author' => ['default' => ''],
+          'author_name' => ['default' => ''],
+          'post_status' => ['default' => ['publish', 'pending', 'draft', 'auto-draft', 'future', 'private']],
+          'suppress_filters' => ['default' => true],
+          'fields' => ['default' => '']
         ]
       ],
       /**
@@ -66,27 +64,25 @@ trait REST_API
        * https://developer.wordpress.org/reference/functions/get_pages/
        */
       'pages' => [
-        [
-          'methods'  => \WP_REST_Server::CREATABLE,
-          'callback' => 'get_pages_API',
-          'permission_callback' => 'rest_api_user',
-          'args' => [
-            'sort_order' => ['default' => 'ASC'],
-            'sort_column' => ['default' => 'post_title'],
-            'hierarchical' => ['default' => true],
-            'exclude' => ['default' => ''],
-            'include' => ['default' => ''],
-            'meta_key' => ['default' => ''],
-            'meta_value' => ['default' => ''],
-            'authors' => ['default' => ''],
-            'child_of' => ['default' => 0],
-            'parent' => ['default' => -1],
-            'exclude_tree' => ['default' => ''],
-            'number' => ['default' => 0],
-            'offset' => ['default' => 0],
-            'post_type' => ['default' => 'page'],
-            'post_status' => ['default' => ['publish', 'pending', 'draft', 'auto-draft', 'future', 'private']]
-          ]
+        'methods'  => \WP_REST_Server::CREATABLE,
+        'callback' => 'get_pages_API',
+        'permission_callback' => 'rest_api_user',
+        'args' => [
+          'sort_order' => ['default' => 'ASC'],
+          'sort_column' => ['default' => 'post_title'],
+          'hierarchical' => ['default' => true],
+          'exclude' => ['default' => ''],
+          'include' => ['default' => ''],
+          'meta_key' => ['default' => ''],
+          'meta_value' => ['default' => ''],
+          'authors' => ['default' => ''],
+          'child_of' => ['default' => 0],
+          'parent' => ['default' => -1],
+          'exclude_tree' => ['default' => ''],
+          'number' => ['default' => 0],
+          'offset' => ['default' => 0],
+          'post_type' => ['default' => 'page'],
+          'post_status' => ['default' => ['publish', 'pending', 'draft', 'auto-draft', 'future', 'private']]
         ]
       ],
       /**
@@ -96,16 +92,14 @@ trait REST_API
        * https://developer.wordpress.org/reference/classes/wp_query/parse_query/
        */
       'attachments' => [
-        [
-          'methods'  => \WP_REST_Server::CREATABLE,
-          'callback' => 'get_attachments_API',
-          'permission_callback' => 'rest_api_user',
-          'args' => [
-            'post_type' => ['default' => 'attachment'],
-            'post_mime_type' => ['default' => 'image'],
-            'post_status' => ['default' => 'inherit'],
-            'posts_per_page' => ['default' => -1]
-          ]
+        'methods'  => \WP_REST_Server::CREATABLE,
+        'callback' => 'get_attachments_API',
+        'permission_callback' => 'rest_api_user',
+        'args' => [
+          'post_type' => ['default' => 'attachment'],
+          'post_mime_type' => ['default' => 'image'],
+          'post_status' => ['default' => 'inherit'],
+          'posts_per_page' => ['default' => -1]
         ]
       ],
       /**
@@ -115,57 +109,55 @@ trait REST_API
        * https://developer.wordpress.org/reference/classes/wp_query/parse_query/
        */
       'comments' => [
-        [
-          'methods'  => \WP_REST_Server::CREATABLE,
-          'callback' => 'get_comments_API',
-          'permission_callback' => 'rest_api_user',
-          'args' => [
-            'author_email' => ['default' => ''],
-            'author_url' => ['default' => ''],
-            'author__in' => ['default' => ''],
-            'author__not_in' => ['default' => ''],
-            'include_unapproved' => ['default' => ''],
-            'fields' => ['default' => ''],
-            'ID' => ['default' => ''],
-            'comment__in' => ['default' => ''],
-            'comment__not_in' => ['default' => ''],
-            'karma' => ['default' => ''],
-            'number' => ['default' => ''],
-            'offset' => ['default' => ''],
-            'no_found_rows' => ['default' => true],
-            'orderby' => ['default' => ''],
-            'order' => ['default' => 'DESC'],
-            'paged' => ['default' => 1],
-            'parent' => ['default' => ''],
-            'parent__in' => ['default' => ''],
-            'parent__not_in' => ['default' => ''],
-            'post_author__in' => ['default' => ''],
-            'post_author__not_in' => ['default' => ''],
-            'post_ID' => ['default' => ''],
-            'post_id' => ['default' => 0],
-            'post__in' => ['default' => ''],
-            'post__not_in' => ['default' => ''],
-            'post_author' => ['default' => ''],
-            'post_name' => ['default' => ''],
-            'post_parent' => ['default' => ''],
-            'post_status' => ['default' => ''],
-            'post_type' => ['default' => ''],
-            'status' => ['default' => 'all'],
-            'type' => ['default' => ''],
-            'type__in' => ['default' => ''],
-            'type__not_in' => ['default' => ''],
-            'user_id' => ['default' => ''],
-            'search' => ['default' => ''],
-            'count' => ['default' => false],
-            'meta_key' => ['default' => ''],
-            'meta_value' => ['default' => ''],
-            'meta_query' => ['default' => ''],
-            'date_query' => ['default' => null], // See WP_Date_Query
-            'hierarchical' => ['default' => false],
-            'cache_domain' => ['default' => 'core'],
-            'update_comment_meta_cache' => ['default' => true],
-            'update_comment_post_cache' => ['default' => false]
-          ]
+        'methods'  => \WP_REST_Server::CREATABLE,
+        'callback' => 'get_comments_API',
+        'permission_callback' => 'rest_api_user',
+        'args' => [
+          'author_email' => ['default' => ''],
+          'author_url' => ['default' => ''],
+          'author__in' => ['default' => ''],
+          'author__not_in' => ['default' => ''],
+          'include_unapproved' => ['default' => ''],
+          'fields' => ['default' => ''],
+          'ID' => ['default' => ''],
+          'comment__in' => ['default' => ''],
+          'comment__not_in' => ['default' => ''],
+          'karma' => ['default' => ''],
+          'number' => ['default' => ''],
+          'offset' => ['default' => ''],
+          'no_found_rows' => ['default' => true],
+          'orderby' => ['default' => ''],
+          'order' => ['default' => 'DESC'],
+          'paged' => ['default' => 1],
+          'parent' => ['default' => ''],
+          'parent__in' => ['default' => ''],
+          'parent__not_in' => ['default' => ''],
+          'post_author__in' => ['default' => ''],
+          'post_author__not_in' => ['default' => ''],
+          'post_ID' => ['default' => ''],
+          'post_id' => ['default' => 0],
+          'post__in' => ['default' => ''],
+          'post__not_in' => ['default' => ''],
+          'post_author' => ['default' => ''],
+          'post_name' => ['default' => ''],
+          'post_parent' => ['default' => ''],
+          'post_status' => ['default' => ''],
+          'post_type' => ['default' => ''],
+          'status' => ['default' => 'all'],
+          'type' => ['default' => ''],
+          'type__in' => ['default' => ''],
+          'type__not_in' => ['default' => ''],
+          'user_id' => ['default' => ''],
+          'search' => ['default' => ''],
+          'count' => ['default' => false],
+          'meta_key' => ['default' => ''],
+          'meta_value' => ['default' => ''],
+          'meta_query' => ['default' => ''],
+          'date_query' => ['default' => null], // See WP_Date_Query
+          'hierarchical' => ['default' => false],
+          'cache_domain' => ['default' => 'core'],
+          'update_comment_meta_cache' => ['default' => true],
+          'update_comment_post_cache' => ['default' => false]
         ]
       ],
       /**
@@ -176,43 +168,41 @@ trait REST_API
        * https://developer.wordpress.org/reference/classes/wp_term_query/__construct/
        */
       'terms' => [
-        [
-          'methods'  => \WP_REST_Server::CREATABLE,
-          'callback' => 'get_terms_API',
-          'permission_callback' => 'rest_api_user',
-          'args' => [
-            'taxonomy' => ['default' => null],
-            'object_ids' => ['default' => null],
-            'orderby' => ['default' => 'name'],
-            'order' => ['default' => 'ASC'],
-            'hide_empty' => ['default' => true],
-            'include' => ['default' => []],
-            'exclude' => ['default' => []],
-            'exclude_tree' => ['default' => []],
-            'number' => ['default' => ''],
-            'offset' => ['default' => ''],
-            'fields' => ['default' => 'all'],
-            'count' => ['default' => false],
-            'name' => ['default' => ''],
-            'slug' => ['default' => ''],
-            'term_taxonomy_id' => ['default' => ''],
-            'hierarchical' => ['default' => true],
-            'search' => ['default' => ''],
-            'name__like' => ['default' => ''],
-            'description__like' => ['default' => ''],
-            'pad_counts' => ['default' => false],
-            'get' => ['default' => ''],
-            'child_of' => ['default' => 0],
-            'parent' => ['default' => ''],
-            'childless' => ['default' => false],
-            'cache_domain' => ['default' => 'core'],
-            'update_term_meta_cache' => ['default' => true],
-            'meta_query' => ['default' => ''],
-            'meta_key' => ['default' => ''],
-            'meta_value' => ['default' => ''],
-            'meta_type' => ['default' => ''],
-            'meta_compare' => ['default' => '']
-          ]
+        'methods'  => \WP_REST_Server::CREATABLE,
+        'callback' => 'get_terms_API',
+        'permission_callback' => 'rest_api_user',
+        'args' => [
+          'taxonomy' => ['default' => null],
+          'object_ids' => ['default' => null],
+          'orderby' => ['default' => 'name'],
+          'order' => ['default' => 'ASC'],
+          'hide_empty' => ['default' => true],
+          'include' => ['default' => []],
+          'exclude' => ['default' => []],
+          'exclude_tree' => ['default' => []],
+          'number' => ['default' => ''],
+          'offset' => ['default' => ''],
+          'fields' => ['default' => 'all'],
+          'count' => ['default' => false],
+          'name' => ['default' => ''],
+          'slug' => ['default' => ''],
+          'term_taxonomy_id' => ['default' => ''],
+          'hierarchical' => ['default' => true],
+          'search' => ['default' => ''],
+          'name__like' => ['default' => ''],
+          'description__like' => ['default' => ''],
+          'pad_counts' => ['default' => false],
+          'get' => ['default' => ''],
+          'child_of' => ['default' => 0],
+          'parent' => ['default' => ''],
+          'childless' => ['default' => false],
+          'cache_domain' => ['default' => 'core'],
+          'update_term_meta_cache' => ['default' => true],
+          'meta_query' => ['default' => ''],
+          'meta_key' => ['default' => ''],
+          'meta_value' => ['default' => ''],
+          'meta_type' => ['default' => ''],
+          'meta_compare' => ['default' => '']
         ]
       ],
       /**
@@ -222,31 +212,29 @@ trait REST_API
        * https://developer.wordpress.org/reference/functions/wp_nav_menu/
        */
       'menus' => [
-        [
-          'methods'  => \WP_REST_Server::CREATABLE,
-          'callback' => 'get_menus_API',
-          'permission_callback' => 'rest_api_user',
-          'args' => [
-            'all_menus' => ['default' => false],
-            'menu' => ['default' => ''],
-            'menu_class' => ['default' => ''],
-            'menu_id' => ['default' => ''],
-            'container' => ['default' => 'ul'],
-            'container_class' => ['default' => ''],
-            'container_id' => ['default' => ''],
-            'container_aria_label' => ['default' => ''],
-            'fallback_cb' => ['default' => false],
-            'before' => ['default' => ''],
-            'after' => ['default' => ''],
-            'link_before' => ['default' => ''],
-            'link_after' => ['default' => ''],
-            'echo' => ['default' => false],
-            'depth' => ['default' => 0],
-            'walker' => ['default' => ''],
-            'theme_location' => ['default' => ''],
-            'items_wrap' => ['default' => '<ul id="%1$s" class="%2$s">%3$s</ul>'],
-            'item_spacing' => ['default' => 'preserve']
-          ]
+        'methods'  => \WP_REST_Server::CREATABLE,
+        'callback' => 'get_menus_API',
+        'permission_callback' => 'rest_api_user',
+        'args' => [
+          'all_menus' => ['default' => false],
+          'menu' => ['default' => ''],
+          'menu_class' => ['default' => ''],
+          'menu_id' => ['default' => ''],
+          'container' => ['default' => 'ul'],
+          'container_class' => ['default' => ''],
+          'container_id' => ['default' => ''],
+          'container_aria_label' => ['default' => ''],
+          'fallback_cb' => ['default' => false],
+          'before' => ['default' => ''],
+          'after' => ['default' => ''],
+          'link_before' => ['default' => ''],
+          'link_after' => ['default' => ''],
+          'echo' => ['default' => false],
+          'depth' => ['default' => 0],
+          'walker' => ['default' => ''],
+          'theme_location' => ['default' => ''],
+          'items_wrap' => ['default' => '<ul id="%1$s" class="%2$s">%3$s</ul>'],
+          'item_spacing' => ['default' => 'preserve']
         ]
       ],
       /**
@@ -256,17 +244,15 @@ trait REST_API
        * https://www.advancedcustomfields.com/resources/get_fields/
        */
       'fields' => [
-        [
-          'methods'  => \WP_REST_Server::CREATABLE,
-          'callback' => 'get_fields_API',
-          'permission_callback' => 'rest_api_user',
-          'args' => [
-            'ID' => [
-              'default' => 0,
-              'required' => true
-            ],
-            'fields' => ['default' => false]
-          ]
+        'methods'  => \WP_REST_Server::CREATABLE,
+        'callback' => 'get_fields_API',
+        'permission_callback' => 'rest_api_user',
+        'args' => [
+          'ID' => [
+            'default' => 0,
+            'required' => true
+          ],
+          'fields' => ['default' => false]
         ]
       ],
       /**
@@ -285,38 +271,36 @@ trait REST_API
        * order_by = 'ID'
        */
       'wpdb' => [
-        [
-          'methods'  => \WP_REST_Server::CREATABLE,
-          'callback' => 'get_wpdb_API',
-          'permission_callback' => 'rest_api_user',
-          'args' => [
-            'SQL' => ['default' => false],
-            'ID' => ['default' => ''],
-            'post_author' => ['default' => ''],
-            'post_date' => ['default' => ''],
-            'post_date_gmt' => ['default' => ''],
-            'post_content' => ['default' => ''],
-            'post_title' => ['default' => ''],
-            'post_excerpt' => ['default' => ''],
-            'post_status' => ['default' => ''],
-            'comment_status' => ['default' => ''],
-            'ping_status' => ['default' => ''],
-            'post_password' => ['default' => ''],
-            'post_name' => ['default' => ''],
-            'to_ping' => ['default' => ''],
-            'pinged' => ['default' => ''],
-            'post_modified' => ['default' => ''],
-            'post_modified_gmt' => ['default' => ''],
-            'post_content_filtered' => ['default' => ''],
-            'post_parent' => ['default' => ''],
-            'guid' => ['default' => ''],
-            'menu_order' => ['default' => ''],
-            'post_mime_type' => ['default' => ''],
-            'comment_count' => ['default' => ''],
-            'post_type' => ['default' => ''],
-            'order' => ['default' => 'DESC'],
-            'group_by' => ['default' => 'ID']
-          ]
+        'methods'  => \WP_REST_Server::CREATABLE,
+        'callback' => 'get_wpdb_API',
+        'permission_callback' => 'rest_api_user',
+        'args' => [
+          'SQL' => ['default' => false],
+          'ID' => ['default' => ''],
+          'post_author' => ['default' => ''],
+          'post_date' => ['default' => ''],
+          'post_date_gmt' => ['default' => ''],
+          'post_content' => ['default' => ''],
+          'post_title' => ['default' => ''],
+          'post_excerpt' => ['default' => ''],
+          'post_status' => ['default' => ''],
+          'comment_status' => ['default' => ''],
+          'ping_status' => ['default' => ''],
+          'post_password' => ['default' => ''],
+          'post_name' => ['default' => ''],
+          'to_ping' => ['default' => ''],
+          'pinged' => ['default' => ''],
+          'post_modified' => ['default' => ''],
+          'post_modified_gmt' => ['default' => ''],
+          'post_content_filtered' => ['default' => ''],
+          'post_parent' => ['default' => ''],
+          'guid' => ['default' => ''],
+          'menu_order' => ['default' => ''],
+          'post_mime_type' => ['default' => ''],
+          'comment_count' => ['default' => ''],
+          'post_type' => ['default' => ''],
+          'order' => ['default' => 'DESC'],
+          'group_by' => ['default' => 'ID']
         ]
       ],
       /**
@@ -326,31 +310,29 @@ trait REST_API
        * https://github.com/PHPMailer/PHPMailer
        */
       'email' => [
-        [
-          'methods'  => \WP_REST_Server::CREATABLE,
-          'callback' => 'send_email_API',
-          'permission_callback' => 'rest_api_user',
-          'args' => [
-            'host' => ['required' => true],
-            'SMTP_auth' => ['required' => true],
-            'username' => ['required' => true],
-            'password' => ['required' => true],
-            'SMTP_secure' => ['required' => true],
-            'port' => ['required' => true],
-            'set_from' => ['required' => true],
-            'add_address' => [
-              'required' => true,
-              'validate_callback' => 'is_array'
-            ],
-            'add_reply_to' => ['default' => false],
-            'add_cc' => ['default' => false],
-            'add_bcc' => ['default' => false],
-            'add_attachment' => ['default' => []],
-            'subject' => ['default' => 'Subject'],
-            'body' => ['default' => 'This is the HTML message body <b>in bold!</b>'],
-            'alt_body' => ['default' => 'This is the body in plain text for non-HTML mail clients'],
-            'debug' => ['default' => false]
-          ]
+        'methods'  => \WP_REST_Server::CREATABLE,
+        'callback' => 'send_email_API',
+        'permission_callback' => 'rest_api_user',
+        'args' => [
+          'host' => ['required' => true],
+          'SMTP_auth' => ['required' => true],
+          'username' => ['required' => true],
+          'password' => ['required' => true],
+          'SMTP_secure' => ['required' => true],
+          'port' => ['required' => true],
+          'set_from' => ['required' => true],
+          'add_address' => [
+            'required' => true,
+            'validate_callback' => 'is_array'
+          ],
+          'add_reply_to' => ['default' => false],
+          'add_cc' => ['default' => false],
+          'add_bcc' => ['default' => false],
+          'add_attachment' => ['default' => []],
+          'subject' => ['default' => 'Subject'],
+          'body' => ['default' => 'This is the HTML message body <b>in bold!</b>'],
+          'alt_body' => ['default' => 'This is the body in plain text for non-HTML mail clients'],
+          'debug' => ['default' => false]
         ]
       ]
     ];
@@ -530,21 +512,18 @@ trait REST_API
        */
       foreach ($this->rest_routes as $rest_key => $rest_val) {
 
-        $routes = [];
-        foreach ($rest_val as $route) {
-          $routes[] = [
-            'methods'  => $route['methods'],
-            'callback' => [
-              $this,
-              $route['callback']
-            ],
-            'permission_callback' => function () use ($route) {
-              /** check if User is REST API User */
-              return in_array($route['permission_callback'], wp_get_current_user()->roles);
-            },
-            'args' => $route['args']
-          ];
-        }
+        $routes = [
+          'methods'  => $rest_val['methods'],
+          'callback' => [
+            $this,
+            $rest_val['callback']
+          ],
+          'permission_callback' => function () use ($rest_val) {
+            /** check if User is REST API User */
+            return in_array($rest_val['permission_callback'], wp_get_current_user()->roles);
+          },
+          'args' => $rest_val['args']
+        ];
 
         register_rest_route($this->rest_api['namespace'], '/' . $rest_key, $routes);
       }
