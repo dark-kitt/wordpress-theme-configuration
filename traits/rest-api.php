@@ -3,6 +3,7 @@
 namespace KiTT;
 
 /** Import PHPMailer classes into the global namespace */
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -519,8 +520,11 @@ trait REST_API
             $rest_val['callback']
           ],
           'permission_callback' => function () use ($rest_val) {
+            $permisson = $rest_val['permission_callback'];
+            /** if endpoint is public return true */
+            if ($permisson === '__return_true') return $permisson;
             /** check if User is REST API User */
-            return in_array($rest_val['permission_callback'], wp_get_current_user()->roles);
+            return in_array($permisson, wp_get_current_user()->roles);
           },
           'args' => $rest_val['args']
         ];
