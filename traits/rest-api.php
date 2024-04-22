@@ -427,7 +427,7 @@ trait REST_API
      * add REST API User Role
      * deny access to WordPress backend
      */
-    add_role('rest_api_user', 'REST API User', $this->capabilities);
+    add_role('rest_api_user', 'REST-API User', $this->capabilities);
     /** clear session data in database */
     add_action('init', function () {
       $user = wp_get_current_user();
