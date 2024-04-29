@@ -47,44 +47,37 @@ Note: If you need an easy way to install this project with all requirements take
 ---
 
 ## Installation
-
-Edit your composer.json file and insert the following lines to install the **WordPress base configuration MU-Plugin** and the required **Autoloader MU-Plugin**. Don't forget to insert the **JWT Authentication for WP REST API** if you want to use the **`REST_API()`** method. Run **composer update** to fetch the required files.
-
-```json
-...
-"repositories": [
-  {
-    "type": "composer",
-    "url": "https://wpackagist.org"
-  },
-  {
-    "type": "vcs",
-    "url": "https://#"
-  }
-]
-...
-"require": {
-  "dark-kitt/wordpress-theme-configuration": "dev-main",
-  "dark-kitt/wordpress-mu-plugin-autoloader": "dev-main",
-  "wpackagist-plugin/jwt-authentication-for-wp-rest-api": "^1.2.6"
-}
-...
+```shell
+composer require dark-kitt/wordpress-theme-configuration
 ```
 
-- copy-paste the code inside of **_composer.json_** file
-- run **composer update**
-- configure the plugin with the **_functions.php_** file in the _`/themes/your-theme`_ directory
+If you have a specific path to your MU-Plugin directory, please add the following lines to your composer.json file.
+```json
+"extra": {
+  "installer-paths": {
+    "path/to/mu-plugins/{$name}/": [
+      "type:wordpress-muplugin"
+    ]
+  },
+  "wordpress-install-dir": "path/to/wordpress"
+},
+```
+
+Afterward, configure the plugin with the **`functions.php`** file in the _`/themes/your-theme`_ directory. Don't forget to insert the **[JWT Authentication for WP REST API](https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/)** if you want to use the **`REST_API()`** method.
 
 Note: For a specific commit of your VCS Repo `"require": { "vendor/repo_name": "dev-main#eec8698" }` (branch#commit).
 
-**composer cmds**
+**common composer cmds**
 
 ```shell
 composer install
 composer update
+# package control
+composer require verdor/package
+composer remove verdor/package
 
 composer clear-cache
-composer show -i (installed packages)
+composer show -i # installed packages
 ```
 
 **Autoloader for WordPress MU-Plugins**
