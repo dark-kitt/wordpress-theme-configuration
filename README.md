@@ -8,7 +8,9 @@ Project: [Part 1](https://github.com/dark-kitt/wordpress-boilerplate/tree/main),
 
 A base WordPress theme configuration written as MU-Plugin, which includes multiple WordPress hooks to improve your theme. Configure the selected theme in the **_functions.php_** file with the listed methods below.
 
-The [Autoloader MU-Plugin](https://github.com/dark-kitt/wordpress-mu-plugin-autoloader) is required to load this plugin by WordPress. After **composer update** copy the **_mu-plugin-autoloader.php_** file inside of the _`/mu-plugins`_ directory, to load the WordPress Theme Configuration MU-Plugin automatically. Note: The REST API uses the **JWT Authentication for WP REST API** to secure the API endpoints.
+The [Autoloader MU-Plugin](https://github.com/dark-kitt/wordpress-mu-plugin-autoloader) is required to load this plugin by WordPress. After **composer update** copy the **_mu-plugin-autoloader.php_** file inside of the _`/mu-plugins`_ directory, to load the WordPress Theme Configuration MU-Plugin automatically.
+
+Note: The REST API uses the **JWT Authentication for WP REST API** to secure the API endpoints.
 
 General WordPress configurations are placed in the **_base-configuration.php_** file. For each type / part of WordPress, you can find a PHP Trait in the _`/traits`_ directory. E.g.: attachment.php file for Media Library settings, post.php file for the Post settings... etc.
 
