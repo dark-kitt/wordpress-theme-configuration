@@ -1,4 +1,12 @@
 {
-    "name": "dark-kitt/wordpress-theme-configuration",
-    "type": "wordpress-muplugin"
+  "name": "dark-kitt/wordpress-theme-configuration",
+  "description": "WordPress theme configuration MU-Plugin, which includes multiple WordPress hooks to improve themes",
+  "type": "wordpress-muplugin",
+  "license": "CC-BY-4.0",
+  "authors": [
+    {
+      "name": "dark-kitt"
+    }
+  ],
+  "minimum-stability": "dev"
 }
